@@ -1,0 +1,47 @@
+list is Datatype in Python that stores multiple values in a single varible Kept in a specific order
+
+Without List you stores the items in the following Way:
+Student1 = "Rahul"
+Student2 = "Sam"
+student3 = "Jack"
+
+After putting the Values in the List It looks loke following
+Student = ["Rahul", "Sam", "Jack"]
+Which looks Organize and In specific order
+
+Key Properties of list
+1) Orderd - items stay in the exact order you put them. The first item is always first
+2) Mutable - You can add, change, remove the items even after the list is created
+3) Allow Dulpication - The same value can appears multiple time in the list. It does not force you for the uniqueness
+4) Multiple data types - You can store multiple data types like String, intergers, Booleans etc in the single list
+
+
+Example:
+City = ["Pune", "Mumbai", "Nashik" 10, 20, True]
+print(type(City))
+
+
+
+Acessing List Elements: Indexing
+Every element in a python list occupies a specific position known as Index 
+Python and many programming language follows the Zero based Indexing
+means the frist element in the list will get the index zero then 2 element in list will get index 2 and so
+
+Positive Indexing: From left to Right
+Fruits = ["Apple", "Mango", "Watermelon", "Orange"]
+Index =      0        1          2            3 
+
+Negative Indexing: From right to left
+Fruits = ["Apple", "Mango", "Watermelon", "Orange"]
+Index =     -4       -3         -2           -1 
+
+Printing the Element Using the Index
+print(fruits[0])  # Apple
+print(fruits[2])  # Watermelon
+print(fruits[-3])  # Mango
+
+
+Replacing the element of the list
+Fruits = ["Apple", "Mango", "Watermelon", "Orange"]
+Fruits[2] = "abcd"  # This relpaces the Watermelon with abcd
+
