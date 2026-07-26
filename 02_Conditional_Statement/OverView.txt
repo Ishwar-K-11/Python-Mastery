@@ -1,0 +1,255 @@
+================================================================================
+                        CONDITIONAL STATEMENTS IN PYTHON
+                           (if, elif, else, Nested if)
+================================================================================
+
+Conditional statements are used to make decisions in a program. They execute
+different blocks of code depending on whether a condition evaluates to True
+or False.
+
+--------------------------------------------------------------------------------
+1. Comparison Operators
+--------------------------------------------------------------------------------
+
+    ==      Equal to
+    !=      Not equal to
+    >       Greater than
+    <       Less than
+    >=      Greater than or equal to
+    <=      Less than or equal to
+
+Example
+
+    age = 20
+
+    if age >= 18:
+        print("Adult")
+
+--------------------------------------------------------------------------------
+2. Logical Operators
+--------------------------------------------------------------------------------
+
+    and     Returns True if both conditions are True.
+    or      Returns True if at least one condition is True.
+    not     Reverses the result of a condition.
+
+Example
+
+    age = 20
+    citizen = True
+
+    if age >= 18 and citizen:
+        print("Eligible to Vote")
+
+--------------------------------------------------------------------------------
+3. if Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    Executes a block of code only if the condition is True.
+
+Syntax
+
+    if condition:
+        statements
+
+Example
+
+    number = 10
+
+    if number > 0:
+        print("Positive Number")
+
+Output
+
+    Positive Number
+
+--------------------------------------------------------------------------------
+4. if...else Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    Executes one block if the condition is True and another block if it is
+    False.
+
+Syntax
+
+    if condition:
+        statements
+    else:
+        statements
+
+Example
+
+    number = 7
+
+    if number % 2 == 0:
+        print("Even")
+    else:
+        print("Odd")
+
+Output
+
+    Odd
+
+--------------------------------------------------------------------------------
+5. if...elif...else Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    Used to check multiple conditions. As soon as one condition becomes True,
+    the remaining conditions are skipped.
+
+Syntax
+
+    if condition1:
+        statements
+    elif condition2:
+        statements
+    elif condition3:
+        statements
+    else:
+        statements
+
+Example
+
+    marks = 82
+
+    if marks >= 90:
+        print("Grade A")
+    elif marks >= 75:
+        print("Grade B")
+    elif marks >= 50:
+        print("Grade C")
+    else:
+        print("Fail")
+
+Output
+
+    Grade B
+
+--------------------------------------------------------------------------------
+6. Nested if Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    A Nested if means writing one if statement inside another if statement.
+    The inner if executes only when the outer if condition is True.
+
+Syntax
+
+    if condition1:
+        if condition2:
+            statements
+
+Example
+
+    age = 20
+    citizen = True
+
+    if age >= 18:
+        if citizen:
+            print("Eligible to Vote")
+
+Output
+
+    Eligible to Vote
+
+--------------------------------------------------------------------------------
+7. if Inside else
+--------------------------------------------------------------------------------
+
+Definition
+
+    An if statement can also be placed inside an else block.
+
+Example
+
+    number = -5
+
+    if number > 0:
+        print("Positive")
+    else:
+        if number == 0:
+            print("Zero")
+        else:
+            print("Negative")
+
+Output
+
+    Negative
+
+--------------------------------------------------------------------------------
+8. Multiple Nested if Statements
+--------------------------------------------------------------------------------
+
+Example
+
+    username = "admin"
+    password = "1234"
+
+    if username == "admin":
+        if password == "1234":
+            print("Login Successful")
+        else:
+            print("Incorrect Password")
+    else:
+        print("Invalid Username")
+
+Output
+
+    Login Successful
+
+--------------------------------------------------------------------------------
+9. Flow of Execution
+--------------------------------------------------------------------------------
+
+            Start
+               |
+         Check Condition
+               |
+         +-----+------+
+         |            |
+       True         False
+         |            |
+   Execute if     Check elif
+      Block           |
+                      ...
+               +------+------+
+               |             |
+             True         False
+               |             |
+      Execute elif      Execute else
+          Block             Block
+
+--------------------------------------------------------------------------------
+10. Important Points
+--------------------------------------------------------------------------------
+
+• Every condition must evaluate to either True or False.
+• Indentation is mandatory in Python.
+• elif is short for "else if".
+• A program can have multiple elif blocks.
+• Only one else block is allowed for an if statement.
+• else does not have any condition.
+• Nested if statements are useful when one decision depends on another.
+• Logical operators (and, or, not) can combine multiple conditions.
+• Comparison operators are used to compare values.
+• Every if statement does not require an else statement.
+
+--------------------------------------------------------------------------------
+11. Best Practices
+--------------------------------------------------------------------------------
+
+✓ Use meaningful conditions.
+✓ Keep nesting to a minimum whenever possible.
+✓ Maintain proper indentation (4 spaces).
+✓ Use elif instead of multiple separate if statements when checking
+  related conditions.
+✓ Write simple and readable conditions.
+
+================================================================================

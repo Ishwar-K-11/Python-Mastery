@@ -1,0 +1,252 @@
+================================================================================
+                               FOR LOOP IN PYTHON
+================================================================================
+
+Definition
+
+    A for loop is used to execute a block of code a fixed number of times.
+    It iterates over a sequence such as a range, list, tuple, string,
+    dictionary, or set.
+
+--------------------------------------------------------------------------------
+1. Syntax
+--------------------------------------------------------------------------------
+
+    for variable in sequence:
+        statements
+
+--------------------------------------------------------------------------------
+2. Using range()
+--------------------------------------------------------------------------------
+
+Definition
+
+    The range() function generates a sequence of numbers. It is commonly
+    used with the for loop.
+
+A. range(stop)
+
+Example
+
+    for i in range(5):
+        print(i)
+
+Output
+
+    0
+    1
+    2
+    3
+    4
+
+------------------------------------------------------------
+
+B. range(start, stop)
+
+Example
+
+    for i in range(2, 6):
+        print(i)
+
+Output
+
+    2
+    3
+    4
+    5
+
+------------------------------------------------------------
+
+C. range(start, stop, step)
+
+Example
+
+    for i in range(2, 11, 2):
+        print(i)
+
+Output
+
+    2
+    4
+    6
+    8
+    10
+
+--------------------------------------------------------------------------------
+3. Looping Through a List
+--------------------------------------------------------------------------------
+
+Example
+
+    fruits = ["Apple", "Banana", "Mango"]
+
+    for fruit in fruits:
+        print(fruit)
+
+Output
+
+    Apple
+    Banana
+    Mango
+
+--------------------------------------------------------------------------------
+4. Looping Through a Tuple
+--------------------------------------------------------------------------------
+
+Example
+
+    numbers = (10, 20, 30)
+
+    for num in numbers:
+        print(num)
+
+Output
+
+    10
+    20
+    30
+
+--------------------------------------------------------------------------------
+5. Looping Through a String
+--------------------------------------------------------------------------------
+
+Example
+
+    word = "Python"
+
+    for letter in word:
+        print(letter)
+
+Output
+
+    P
+    y
+    t
+    h
+    o
+    n
+
+--------------------------------------------------------------------------------
+6. Nested for Loop
+--------------------------------------------------------------------------------
+
+Definition
+
+    A for loop inside another for loop is called a Nested for Loop.
+
+Example
+
+    for i in range(3):
+        for j in range(3):
+            print(i, j)
+
+Output
+
+    0 0
+    0 1
+    0 2
+    1 0
+    1 1
+    1 2
+    2 0
+    2 1
+    2 2
+
+--------------------------------------------------------------------------------
+7. break Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    Terminates the loop immediately.
+
+Example
+
+    for i in range(1, 6):
+        if i == 4:
+            break
+        print(i)
+
+Output
+
+    1
+    2
+    3
+
+--------------------------------------------------------------------------------
+8. continue Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    Skips the current iteration and continues with the next iteration.
+
+Example
+
+    for i in range(1, 6):
+        if i == 3:
+            continue
+        print(i)
+
+Output
+
+    1
+    2
+    4
+    5
+
+--------------------------------------------------------------------------------
+9. pass Statement
+--------------------------------------------------------------------------------
+
+Definition
+
+    Acts as a placeholder and performs no action.
+
+Example
+
+    for i in range(3):
+        pass
+
+--------------------------------------------------------------------------------
+10. else with for Loop
+--------------------------------------------------------------------------------
+
+Definition
+
+    The else block executes after the loop completes normally.
+
+Example
+
+    for i in range(3):
+        print(i)
+    else:
+        print("Loop Finished")
+
+Output
+
+    0
+    1
+    2
+    Loop Finished
+
+--------------------------------------------------------------------------------
+11. Important Points
+--------------------------------------------------------------------------------
+
+• Used when the number of iterations is known.
+• Can iterate over any iterable object.
+• range() is commonly used with for loops.
+• Supports break, continue, pass, and else.
+• Nested for loops are widely used in matrix operations and pattern printing.
+
+--------------------------------------------------------------------------------
+12. Best Practices
+--------------------------------------------------------------------------------
+
+✓ Use meaningful loop variables.
+✓ Avoid unnecessary nested loops.
+✓ Prefer for loops over while loops when the number of iterations is known.
+✓ Keep loop bodies short and readable.
+
+================================================================================

@@ -1,0 +1,71 @@
+PATTERN PRINTING
+
+Pattern printing is the process of displaying characters, numbers, or symbols in a specific arrangement using loops. It is one of the best topics for improving logic building and understanding nested loops.
+
+Commonly Used Loops
+
+1. for loop
+   Used when the number of rows is known.
+
+2. while loop
+   Used when the number of iterations is not fixed.
+
+Common Types of Patterns
+
+1. Star (*) Patterns
+   Example:
+   *
+   **
+   ***
+   ****
+
+2. Number Patterns
+   Example:
+   1
+   12
+   123
+   1234
+
+3. Alphabet Patterns
+   Example:
+   A
+   AB
+   ABC
+   ABCD
+
+4. Pyramid Patterns
+   Example:
+      *
+     ***
+    *****
+   *******
+
+5. Inverted Patterns
+   Example:
+   ****
+   ***
+   **
+   *
+
+6. Hollow Patterns
+   Only the boundary is printed while the inside remains empty.
+
+Concepts Required
+
+1. Nested loops
+2. Rows and columns
+3. Range function
+4. Conditional statements (if)
+5. Spaces for alignment
+
+Formula
+
+Outer Loop  → Controls the number of rows.
+Inner Loop  → Controls the number of columns, stars, numbers, or spaces.
+
+Tips
+
+1. Always identify the number of rows.
+2. Observe how many symbols and spaces are printed in each row.
+3. Dry run the pattern on paper before writing the code.
+4. Master basic patterns first, then move to pyramids, diamonds, and hollow patterns.
