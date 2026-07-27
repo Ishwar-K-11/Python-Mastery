@@ -1,0 +1,329 @@
+================================================================================
+                         DICTIONARY METHODS IN PYTHON
+================================================================================
+
+Dictionary methods are built-in functions used to access, modify, update,
+or remove elements from a dictionary.
+
+--------------------------------------------------------------------------------
+1. keys()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns a view object containing all the keys of the dictionary.
+
+Syntax
+
+    dictionary.keys()
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20,
+        "city": "Pune"
+    }
+
+    print(student.keys())
+
+Output
+
+    dict_keys(['name', 'age', 'city'])
+
+--------------------------------------------------------------------------------
+2. values()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns a view object containing all the values of the dictionary.
+
+Syntax
+
+    dictionary.values()
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20,
+        "city": "Pune"
+    }
+
+    print(student.values())
+
+Output
+
+    dict_values(['Ishwar', 20, 'Pune'])
+
+--------------------------------------------------------------------------------
+3. items()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns a view object containing all key-value pairs as tuples.
+
+Syntax
+
+    dictionary.items()
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    print(student.items())
+
+Output
+
+    dict_items([('name', 'Ishwar'), ('age', 20)])
+
+--------------------------------------------------------------------------------
+4. get()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the value of the specified key.
+    If the key does not exist, it returns None (or a default value).
+
+Syntax
+
+    dictionary.get(key)
+
+    dictionary.get(key, default_value)
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    print(student.get("name"))
+    print(student.get("city"))
+    print(student.get("city", "Not Found"))
+
+Output
+
+    Ishwar
+    None
+    Not Found
+
+--------------------------------------------------------------------------------
+5. update()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Adds new key-value pairs or updates existing ones.
+
+Syntax
+
+    dictionary.update({key: value})
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    student.update({"city": "Pune"})
+    student.update({"age": 21})
+
+    print(student)
+
+Output
+
+    {'name': 'Ishwar', 'age': 21, 'city': 'Pune'}
+
+--------------------------------------------------------------------------------
+6. pop()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Removes the specified key and returns its value.
+
+Syntax
+
+    dictionary.pop(key)
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    value = student.pop("age")
+
+    print(value)
+    print(student)
+
+Output
+
+    20
+    {'name': 'Ishwar'}
+
+--------------------------------------------------------------------------------
+7. popitem()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Removes and returns the last inserted key-value pair.
+
+Syntax
+
+    dictionary.popitem()
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20,
+        "city": "Pune"
+    }
+
+    print(student.popitem())
+    print(student)
+
+Output
+
+    ('city', 'Pune')
+    {'name': 'Ishwar', 'age': 20}
+
+--------------------------------------------------------------------------------
+8. clear()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Removes all key-value pairs from the dictionary.
+
+Syntax
+
+    dictionary.clear()
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    student.clear()
+
+    print(student)
+
+Output
+
+    {}
+
+--------------------------------------------------------------------------------
+9. copy()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns a shallow copy of the dictionary.
+
+Syntax
+
+    dictionary.copy()
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    new_student = student.copy()
+
+    print(new_student)
+
+Output
+
+    {'name': 'Ishwar', 'age': 20}
+
+--------------------------------------------------------------------------------
+10. setdefault()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the value of the specified key.
+    If the key does not exist, it inserts the key with the given default
+    value.
+
+Syntax
+
+    dictionary.setdefault(key, default_value)
+
+Example
+
+    student = {
+        "name": "Ishwar"
+    }
+
+    print(student.setdefault("age", 20))
+    print(student)
+
+Output
+
+    20
+    {'name': 'Ishwar', 'age': 20}
+
+--------------------------------------------------------------------------------
+11. fromkeys()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Creates a new dictionary using the given keys and assigns the same
+    default value to all keys.
+
+Syntax
+
+    dict.fromkeys(keys, value)
+
+Example
+
+    keys = ["name", "age", "city"]
+
+    student = dict.fromkeys(keys, "Not Available")
+
+    print(student)
+
+Output
+
+    {'name': 'Not Available',
+     'age': 'Not Available',
+     'city': 'Not Available'}
+
+--------------------------------------------------------------------------------
+Summary of Dictionary Methods
+--------------------------------------------------------------------------------
+
+Method              Description
+----------------------------------------------------------
+keys()              Returns all keys.
+values()            Returns all values.
+items()             Returns all key-value pairs.
+get()               Returns the value of a key.
+update()            Adds or updates key-value pairs.
+pop()               Removes a specified key.
+popitem()           Removes the last inserted item.
+clear()             Removes all items.
+copy()              Returns a shallow copy.
+setdefault()        Returns/inserts a default value.
+fromkeys()          Creates a new dictionary from keys.
+
+================================================================================

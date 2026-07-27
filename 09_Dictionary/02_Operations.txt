@@ -1,0 +1,144 @@
+--------------------------------------------------------------------------------
+1. Dictionary Methods
+--------------------------------------------------------------------------------
+
+keys()
+
+    Returns all keys.
+
+values()
+
+    Returns all values.
+
+items()
+
+    Returns key-value pairs as tuples.
+
+get(key)
+
+    Returns the value of a key.
+
+update()
+
+    Adds or updates multiple key-value pairs.
+
+copy()
+
+    Returns a shallow copy of the dictionary.
+
+setdefault()
+
+    Returns the value of a key. If the key does not exist,
+    it inserts the key with the specified default value.
+
+fromkeys()
+
+    Creates a new dictionary using the given keys.
+
+--------------------------------------------------------------------------------
+2. Iterating Through a Dictionary
+--------------------------------------------------------------------------------
+
+Keys
+
+    for key in student:
+        print(key)
+
+Values
+
+    for value in student.values():
+        print(value)
+
+Key-Value Pairs
+
+    for key, value in student.items():
+        print(key, value)
+
+--------------------------------------------------------------------------------
+3. Nested Dictionary
+--------------------------------------------------------------------------------
+
+Definition
+
+    A dictionary inside another dictionary is called a Nested Dictionary.
+
+Example
+
+    student = {
+        "info": {
+            "name": "Rahul",
+            "age": 20
+        }
+    }
+
+--------------------------------------------------------------------------------
+4. Dictionary Comprehension
+--------------------------------------------------------------------------------
+
+Syntax
+
+    {expression for item in iterable}
+
+Example
+
+    square = {x: x*x for x in range(1, 6)}
+
+Output
+
+    {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+--------------------------------------------------------------------------------
+5. Membership Operators
+--------------------------------------------------------------------------------
+
+Check if a key exists
+
+    "name" in student
+
+Check if a key does not exist
+
+    "city" not in student
+
+--------------------------------------------------------------------------------
+6. Important Points
+--------------------------------------------------------------------------------
+
+• Keys must be unique.
+• Values can be duplicated.
+• Keys are case-sensitive.
+• Dictionaries are mutable.
+• Dictionaries use key-value pairs.
+• Keys must be immutable.
+• Values can be of any data type.
+• Fast lookup using keys.
+• Supports nested dictionaries.
+
+--------------------------------------------------------------------------------
+7. Common Dictionary Methods
+--------------------------------------------------------------------------------
+
+Method              Description
+--------------------------------------------------------
+clear()             Removes all items.
+copy()              Returns a copy.
+fromkeys()          Creates a new dictionary.
+get()               Returns the value of a key.
+items()             Returns key-value pairs.
+keys()              Returns all keys.
+pop()               Removes a specified key.
+popitem()           Removes the last inserted item.
+setdefault()        Returns/adds a default value.
+update()            Updates the dictionary.
+values()            Returns all values.
+
+--------------------------------------------------------------------------------
+8. Best Practices
+--------------------------------------------------------------------------------
+
+✓ Use meaningful key names.
+✓ Use get() when a key may not exist.
+✓ Keep keys unique.
+✓ Iterate using items() when both keys and values are needed.
+✓ Avoid modifying a dictionary while iterating over it.
+
+================================================================================

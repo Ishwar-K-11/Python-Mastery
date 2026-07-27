@@ -1,0 +1,125 @@
+================================================================================
+                             DICTIONARY IN PYTHON
+================================================================================
+
+Definition
+
+    A Dictionary is a built-in data type used to store data in the form of
+    key-value pairs. Dictionaries are ordered, mutable (changeable), and
+    do not allow duplicate keys.
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 45,
+        "course": "BBA"
+    }
+
+--------------------------------------------------------------------------------
+1. Characteristics
+--------------------------------------------------------------------------------
+
+• Stores data as key : value pairs.
+• Ordered (Python 3.7+).
+• Mutable (elements can be added, updated, or removed).
+• Duplicate keys are not allowed.
+• Duplicate values are allowed.
+• Keys must be immutable (string, integer, tuple, etc.).
+• Values can be of any data type.
+
+--------------------------------------------------------------------------------
+2. Creating a Dictionary
+--------------------------------------------------------------------------------
+
+    1) Empty Dictionary
+
+        d = {}
+
+    2) Using Curly Braces
+
+        student = {
+            "name": "Rahul",
+            age": 20
+        }
+
+    3) Using dict()
+
+        student = dict(name="Rahul", age=20)
+
+--------------------------------------------------------------------------------
+3. Accessing Elements
+--------------------------------------------------------------------------------
+
+1)Using Square Brackets
+
+    student["name"]
+
+2)Using get()
+
+    student.get("name")
+
+Difference
+
+    []      Raises an error if the key does not exist.
+    get()   Returns None (or a default value) if the key does not exist.
+
+--------------------------------------------------------------------------------
+4. Adding Elements
+--------------------------------------------------------------------------------
+
+Syntax
+
+    dictionary[key] = value
+
+Example
+
+    student["city"] = "Pune"
+
+--------------------------------------------------------------------------------
+5. Updating Elements
+--------------------------------------------------------------------------------
+
+Syntax
+
+    dictionary[key] = new_value
+
+Example
+
+    student["age"] = 21
+
+--------------------------------------------------------------------------------
+6. Removing Elements
+--------------------------------------------------------------------------------
+
+1) pop(key)
+
+    Removes the specified key and returns its value.
+
+    Example
+
+    student.pop("age")
+
+2) popitem()
+
+    Removes the last inserted key-value pair.
+
+    Example
+
+    student.popitem()
+
+3) del
+
+    Deletes a specific key or the entire dictionary.
+
+    Example
+
+    del student["city"]
+
+4) clear()
+
+    Removes all elements.
+
+    Example
+
+    student.clear()

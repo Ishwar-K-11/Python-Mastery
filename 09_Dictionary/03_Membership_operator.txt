@@ -1,0 +1,81 @@
+================================================================================
+                     MEMBERSHIP OPERATORS IN DICTIONARY
+================================================================================
+
+Definition
+
+    Membership operators are used to check whether a key exists in a
+    dictionary. They return either True or False.
+
+Python provides two membership operators:
+
+    • in
+    • not in
+
+--------------------------------------------------------------------------------
+1. in Operator
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns True if the specified key exists in the dictionary.
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20,
+        "city": "Pune"
+    }
+
+    print("name" in student)
+    print("course" in student)
+
+Output
+
+    True
+    False
+
+--------------------------------------------------------------------------------
+2. not in Operator
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns True if the specified key does not exist in the dictionary.
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20
+    }
+
+    print("city" not in student)
+    print("age" not in student)
+
+Output
+
+    True
+    False
+
+--------------------------------------------------------------------------------
+Important Points
+--------------------------------------------------------------------------------
+
+• Membership operators check only keys, not values.
+• The result is always True or False.
+• To check a value, use dictionary.values().
+• To check both keys and values, use dictionary.items().
+
+Example
+
+    student = {
+        "name": "Sam",
+        "age": 35
+    }
+
+    print("Sam" in student.values())      # True
+    print(("name", "Ishwar") in student.items())   # True
+
+================================================================================
