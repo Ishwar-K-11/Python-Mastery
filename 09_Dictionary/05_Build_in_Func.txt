@@ -1,0 +1,189 @@
+================================================================================
+                  BUILT-IN FUNCTIONS FOR DICTIONARIES IN PYTHON
+================================================================================
+
+Python provides several built-in functions that can be used with dictionaries.
+Most of these functions operate on the dictionary's keys by default.
+
+--------------------------------------------------------------------------------
+1. len()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the total number of key-value pairs in the dictionary.
+
+Syntax
+
+    len(dictionary)
+
+Example
+
+    student = {
+        "name": "Ishwar",
+        "age": 20,
+        "city": "Pune"
+    }
+
+    print(len(student))
+
+Output
+
+    3
+
+--------------------------------------------------------------------------------
+2. min()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the smallest key in the dictionary.
+
+Syntax
+
+    min(dictionary)
+
+Example
+
+    student = {
+        "b": 20,
+        "a": 10,
+        "c": 30
+    }
+
+    print(min(student))
+
+Output
+
+    a
+
+Note
+
+    To find the minimum value:
+
+    print(min(student.values()))
+
+Output
+
+    10
+
+--------------------------------------------------------------------------------
+3. max()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the largest key in the dictionary.
+
+Syntax
+
+    max(dictionary)
+
+Example
+
+    student = {
+        "b": 20,
+        "a": 10,
+        "c": 30
+    }
+
+    print(max(student))
+
+Output
+
+    c
+
+Note
+
+    To find the maximum value:
+
+    print(max(student.values()))
+
+Output
+
+    30
+
+--------------------------------------------------------------------------------
+4. sorted()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the dictionary keys in sorted order as a list.
+
+Syntax
+
+    sorted(dictionary)
+
+Example
+
+    student = {
+        "city": "Pune",
+        "age": 20,
+        "name": "Ishwar"
+    }
+
+    print(sorted(student))
+
+Output
+
+    ['age', 'city', 'name']
+
+Sort by Values
+
+    print(sorted(student.values()))
+
+Output
+
+    [20, 'Ishwar', 'Pune']
+
+--------------------------------------------------------------------------------
+5. sum()
+--------------------------------------------------------------------------------
+
+Definition
+
+    Returns the sum of numeric values.
+
+Syntax
+
+    sum(dictionary.values())
+
+Example
+
+    marks = {
+        "Math": 85,
+        "Science": 90,
+        "English": 88
+    }
+
+    print(sum(marks.values()))
+
+Output
+
+    263
+
+--------------------------------------------------------------------------------
+Summary
+--------------------------------------------------------------------------------
+
+Function            Description
+----------------------------------------------------------
+len()               Returns the number of key-value pairs.
+min()               Returns the smallest key.
+max()               Returns the largest key.
+sorted()            Returns the sorted list of keys.
+sum()               Returns the sum of numeric values.
+
+--------------------------------------------------------------------------------
+Important Points
+--------------------------------------------------------------------------------
+
+• len() counts key-value pairs.
+• min(), max(), and sorted() work on keys by default.
+• Use .values() when you want to apply min(), max(), sorted(), or sum() to
+  dictionary values.
+• sum() works only with numeric values.
+• These are Python built-in functions, not dictionary methods.
+
+================================================================================

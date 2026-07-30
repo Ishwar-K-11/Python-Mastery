@@ -1,0 +1,98 @@
+==========================
+PYTHON SETS - OVERVIEW
+==========================
+
+What is a Set?
+--------------
+A Set is a built-in Python data type used to store a collection of unique and unordered elements. Sets automatically remove duplicate values and are useful for performing mathematical set operations such as union, intersection, and difference.
+
+Characteristics of Sets
+-----------------------
+1. Unordered
+   - Elements do not have a fixed order.
+   - Indexing and slicing are not supported.
+
+2. Unique Elements
+   - Duplicate values are automatically removed.
+
+3. Mutable
+   - Elements can be added or removed after the set is created.
+
+4. Immutable Elements
+   - The elements stored in a set must be immutable (e.g., int, float, string, tuple).
+   - Lists, dictionaries, and other sets cannot be stored directly because they are mutable.
+
+5. Dynamic Size
+   - A set can grow or shrink during program execution.
+
+Creating a Set
+--------------
+1. Using curly braces:
+   fruits = {"Apple", "Banana", "Mango"}
+
+2. Using the set() constructor:
+   numbers = set([1, 2, 3, 4])
+
+3. Empty set:
+   empty_set = set()
+
+Note:
+-----
+Using {} creates an empty dictionary, not an empty set.
+
+Example:
+--------
+colors = {"Red", "Blue", "Green", "Blue"}
+print(colors)
+
+Output:
+{'Red', 'Blue', 'Green'}
+
+The duplicate value "Blue" is automatically removed.
+
+Common Uses of Sets
+-------------------
+- Removing duplicate values from a collection.
+- Performing mathematical set operations.
+- Checking membership efficiently.
+- Comparing collections of unique items.
+
+Common Set Operations
+---------------------
+- add()             : Adds an element.
+- update()          : Adds multiple elements.
+- remove()          : Removes an element (raises an error if not found).
+- discard()         : Removes an element without raising an error.
+- pop()             : Removes and returns a random element.
+- clear()           : Removes all elements.
+- copy()            : Creates a copy of the set.
+
+Mathematical Operations
+-----------------------
+- union() (|)
+- intersection() (&)
+- difference() (-)
+- symmetric_difference() (^)
+
+Built-in Functions
+------------------
+- len()
+- max()
+- min()
+- sum()
+- sorted()
+- all()
+- any()
+
+Advantages
+----------
+- Stores only unique values.
+- Fast membership testing.
+- Efficient for mathematical operations.
+- Automatically removes duplicates.
+
+Limitations
+-----------
+- Does not maintain insertion order for set operations conceptually (do not rely on indexing).
+- No indexing or slicing.
+- Only immutable objects can be stored as elements.

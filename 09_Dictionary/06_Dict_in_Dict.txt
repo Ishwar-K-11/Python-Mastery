@@ -1,0 +1,79 @@
+================================================================================
+                      NESTED DICTIONARY (Dictionary in Dictionary)
+================================================================================
+
+Definition
+
+    A Nested Dictionary is a dictionary that contains one or more
+    dictionaries as its values. It is used to store related data in a
+    hierarchical structure.
+
+Syntax
+
+    dictionary = {
+        "key1": {
+            "sub_key1": value,
+            "sub_key2": value
+        },
+        "key2": {
+            "sub_key1": value
+        }
+    }
+
+--------------------------------------------------------------------------------
+Example
+--------------------------------------------------------------------------------
+
+    students = {
+        "Student1": {
+            "name": "Ishwar",
+            "age": 20,
+            "marks": 92
+        },
+        "Student2": {
+            "name": "Rahul",
+            "age": 21,
+            "marks": 88
+        }
+    }
+
+--------------------------------------------------------------------------------
+Accessing Elements
+--------------------------------------------------------------------------------
+
+Syntax
+
+    dictionary["key"]["sub_key"]
+
+Example
+
+    print(students["Student1"]["name"])
+    print(students["Student2"]["marks"])
+
+Output
+
+    Ishwar
+    88
+
+--------------------------------------------------------------------------------
+Important Points
+--------------------------------------------------------------------------------
+
+• A nested dictionary is a dictionary inside another dictionary.
+• Access elements using multiple keys.
+• Useful for storing structured or grouped data.
+• Each inner dictionary can have different keys and values.
+
+================================================================================
+
+
+List In Dictionary
+
+Details = {
+    "Name" : "Ishu"
+    "age" : 45
+    "subjects" : ["Math", "Science", "English"]
+    "Marks" : [90, 76, 89] 
+}
+
+print(sum(Details["Marks"]))
