@@ -1,0 +1,209 @@
+=================================
+        PYTHON STRINGS - OVERVIEW
+=================================
+
+What is a String?
+-----------------
+A String is a built-in Python data type used to store a sequence of
+characters. Strings are used to represent textual data such as names,
+messages, addresses, passwords, and sentences.
+
+In Python, strings are enclosed within:
+    • Single quotes      (' ')
+    • Double quotes      (" ")
+    • Triple quotes      (''' ''' or """ """)
+
+Triple quotes are mainly used for multi-line strings.
+
+
+Characteristics of Strings
+--------------------------
+
+1. Ordered
+   - Characters are stored in a fixed order.
+   - Supports indexing and slicing.
+
+2. Immutable
+   - Once a string is created, it cannot be modified.
+   - Any modification creates a new string.
+
+3. Allows Duplicate Characters
+   - Duplicate characters are allowed.
+   - Their order is preserved.
+
+4. Supports Indexing
+   - Each character has a positive and negative index.
+   - Individual characters can be accessed using indexes.
+
+5. Dynamic Length
+   - A string can contain any number of characters,
+     including an empty string.
+
+
+Creating a String
+-----------------
+
+1. Using Single Quotes
+
+   name = 'Python'
+
+2. Using Double Quotes
+
+   language = "Programming"
+
+3. Using Triple Quotes
+
+   message = """Welcome
+   to Python"""
+
+4. Creating an Empty String
+
+   empty = ""
+
+
+Example
+-------
+
+name = "Ishwar"
+
+print(name)
+print(type(name))
+
+Output:
+
+Ishwar
+<class 'str'>
+
+
+String Indexing
+---------------
+
+Python allows accessing individual characters using indexes.
+
+Example:
+
+word = "Python"
+
+word[0]     ->  'P'
+word[1]     ->  'y'
+word[2]     ->  't'
+
+word[-1]    ->  'n'
+word[-2]    ->  'o'
+
+
+String Slicing
+--------------
+
+Slicing extracts a portion of a string.
+
+Syntax:
+
+string[start : stop : step]
+
+Example:
+
+text = "Programming"
+
+text[0:7]     ->  Program
+text[3:8]     ->  gramm
+text[:6]      ->  Progra
+text[4:]      ->  ramming
+text[::-1]    ->  gnimmargorP
+
+
+Common Uses of Strings
+----------------------
+
+• Storing names and addresses.
+• Displaying messages.
+• Accepting user input.
+• Reading and writing text files.
+• Password validation.
+• Data processing.
+• Web development.
+• Natural Language Processing (NLP).
+
+
+Common String Methods
+---------------------
+
+upper()            : Converts all characters to uppercase.
+
+lower()            : Converts all characters to lowercase.
+
+title()            : Converts the first letter of each word to uppercase.
+
+capitalize()       : Capitalizes only the first character.
+
+strip()            : Removes leading and trailing spaces.
+
+replace()          : Replaces a substring with another substring.
+
+split()            : Splits a string into a list.
+
+join()             : Joins iterable elements into a single string.
+
+find()             : Returns the index of the first occurrence.
+
+count()            : Counts the number of occurrences.
+
+startswith()       : Checks whether a string starts with a value.
+
+endswith()         : Checks whether a string ends with a value.
+
+
+Common String Operators
+-----------------------
+
++                  : Concatenation
+
+*                  : Repetition
+
+in                 : Membership operator
+
+not in             : Non-membership operator
+
+==                 : Equality operator
+
+!=                 : Inequality operator
+
+
+Built-in Functions
+------------------
+
+len()              : Returns the length of the string.
+
+max()              : Returns the largest character.
+
+min()              : Returns the smallest character.
+
+sorted()           : Returns a sorted list of characters.
+
+all()              : Returns True if all characters satisfy the condition.
+
+any()              : Returns True if at least one character satisfies the condition.
+
+ord()              : Returns the Unicode value of a character.
+
+chr()              : Returns the character for a Unicode value.
+
+
+Advantages
+----------
+
+• Easy to create and use.
+• Supports indexing and slicing.
+• Rich collection of built-in methods.
+• Supports Unicode characters.
+• Suitable for text processing.
+• Widely used in real-world applications.
+
+
+Limitations
+-----------
+
+• Strings are immutable.
+• Individual characters cannot be modified directly.
+• Frequent concatenation creates new string objects,
+  which may reduce performance for large operations.
