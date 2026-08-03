@@ -23,33 +23,33 @@ Advantages of Functions
         Large programs become easier to manage.
 
 Syntax
-def function_name():
-    statements
+    def function_name():
+        statements
 
-function_name()
+    function_name()
 
 
 Example 1
-def greet():
-    print("Hello")
+    def greet():
+        print("Hello")
 
-greet()
+    greet()
 
 Output
-Hello
+    Hello
 
 
 Example 2
 
-def message():
-    print("Welcome to Python")
+    def message():
+        print("Welcome to Python")
 
-message()
-message()
+    message()
+    message()
 
 Output
-Welcome to Python
-Welcome to Python
+    Welcome to Python
+    Welcome to Python
 
 
 

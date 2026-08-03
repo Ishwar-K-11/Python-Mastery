@@ -1,0 +1,31 @@
+==============================
+Class and Object
+==============================
+
+Class:
+    A class is a blueprint or template used to create objects. It defines the attributes (data) and methods (functions) that an object will have.
+
+Object:
+    An object is an instance of a class. It is a real-world entity created from the class and can access its attributes and methods.
+
+Syntax:
+
+    class ClassName:
+        # attributes
+        # methods
+
+    object_name = ClassName()
+
+
+Example:
+
+    class Student:
+        def display(self):
+            print("Hello, I am a Student")
+
+    student1 = Student()      # Object Creation
+    student1.display()
+
+
+Output:
+    Hello, I am a Student

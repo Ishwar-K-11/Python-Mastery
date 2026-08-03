@@ -1,0 +1,72 @@
+==============================
+Class Variable
+==============================
+
+    Definition:
+        A class variable is a variable that is shared by all objects of a class. It is declared directly inside the class but outside any method.
+
+    Characteristics:
+        • Shared among all objects.
+        • Stored only once in the class.
+        • Can be accessed using the class name or an object.
+
+    Example:
+
+        class Student:
+            school = "SOE&T"      # Class Variable
+
+        student1 = Student()
+        student2 = Student()
+
+        print(student1.school)
+        print(student2.school)
+        print(Student.school)
+
+    Output:
+        SOE&T
+        SOE&T
+        SOE&T
+
+
+==============================
+Instance Variable
+==============================
+
+    Definition:
+        An instance variable is a variable that belongs to a specific object. It is created using `self` inside methods (usually in the constructor).
+
+    Characteristics:
+        • Each object has its own copy.
+        • Changes made to one object's instance variable do not affect other objects.
+        • Accessed using the object.
+
+    Example:
+
+        class Student:
+            def __init__(self, name):
+                self.name = name      # Instance Variable
+
+        student1 = Student("Ishwar")
+        student2 = Student("Rahul")
+
+        print(student1.name)
+        print(student2.name)
+
+    Output:
+        Ishwar
+        Rahul
+
+
+==============================
+Difference
+==============================
+
+    Class Variable:
+        • Shared by all objects.
+        • Declared directly inside the class.
+        • Same value for every object (unless changed).
+
+    Instance Variable:
+        • Unique for each object.
+        • Declared using `self` inside methods.
+        • Each object can have different values.

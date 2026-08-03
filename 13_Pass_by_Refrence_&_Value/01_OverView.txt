@@ -1,0 +1,60 @@
+==============================
+Pass by Value
+==============================
+
+    Overview:
+        Pass by Value means a copy of the original value is passed to the function. Any changes made inside the function affect only the copied value and do not modify the original variable.
+
+    Characteristics:
+        • A copy of the data is passed.
+        • Original variable remains unchanged.
+        • Common with immutable data types.
+
+    Example:
+        def modify(x):
+            x = x + 10
+            print("Inside Function:", x)
+
+        num = 5
+        modify(num)
+        print("Outside Function:", num)
+
+    Output:
+        Inside Function: 15
+        Outside Function: 5
+
+
+==============================
+Pass by Reference
+==============================
+
+    Overview:
+        Pass by Reference means the function receives a reference to the original object instead of a copy. Changes made to mutable objects inside the function are reflected in the original object.
+
+    Characteristics:
+        • Reference to the original object is passed.
+        • Changes affect the original object.
+        • Common with mutable data types like lists, dictionaries, and sets.
+
+    Example:
+        def modify(lst):
+            lst.append(40)
+            print("Inside Function:", lst)
+
+        numbers = [10, 20, 30]
+        modify(numbers)
+        print("Outside Function:", numbers)
+
+    Output:
+        Inside Function: [10, 20, 30, 40]
+        Outside Function: [10, 20, 30, 40]
+
+
+==============================
+Python Note
+==============================
+
+Python does not strictly use Pass by Value or Pass by Reference. It uses **Pass by Object Reference (Pass by Assignment)**.
+
+    • Immutable objects (int, float, str, tuple, bool) behave like Pass by Value.
+    • Mutable objects (list, dict, set) behave like Pass by Reference.

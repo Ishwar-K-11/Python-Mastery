@@ -1,0 +1,23 @@
+# Rebinding And Mutating
+
+# Rebinding means assigning a variable to a new object, leaving the original object unchanged.
+def rebind(x):
+    x = [10,20,30]
+    print(f"Function Inside: {x}")
+
+num = [999,888,777]
+rebind(num)
+print(f"Outside Fuction: {num}")
+
+
+# Mutating means modifying the contents of an existing mutable object without creating a new object.
+
+def mutate(y):
+    y[0] = 666
+    print(f"inside function: {y}")
+
+num2 = [111,222,333]
+mutate(num2)
+print(f"Outside Function: {num2}")
+
+
