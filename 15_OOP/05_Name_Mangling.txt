@@ -1,0 +1,272 @@
+=========================================================
+                NAME MANGLING IN PYTHON
+=========================================================
+
+Definition:
+    Name Mangling is a mechanism in Python where the interpreter
+    automatically changes the name of a private member (starting
+    with double underscores __) to make it difficult to access
+    directly from outside the class.
+
+    It is used to avoid accidental access and accidental overriding
+    in subclasses.
+
+Syntax:
+
+    class BankAccount:
+
+        def __init__(self):
+            self.__balance = 1000
+
+Internally, Python changes:
+
+    __balance
+
+to
+
+    _BankAccount__balance
+
+Format:
+
+    _ClassName__VariableName
+
+---------------------------------------------------------
+Example
+---------------------------------------------------------
+
+    class BankAccount:
+
+        def __init__(self):
+            self.__balance = 1000
+
+    acc = BankAccount()
+
+    print(acc.__balance)
+
+Output:
+
+    AttributeError:
+    'BankAccount' object has no attribute '__balance'
+
+Reason:
+
+    Python cannot find __balance because it has already changed
+    its name to:
+
+        _BankAccount__balance
+
+---------------------------------------------------------
+Accessing the Mangled Variable
+---------------------------------------------------------
+
+    class BankAccount:
+
+        def __init__(self):
+            self.__balance = 1000
+
+    acc = BankAccount()
+
+    print(acc._BankAccount__balance)
+
+Output:
+
+    1000
+
+Although this works, it should not be used because it breaks
+the idea of encapsulation.
+
+---------------------------------------------------------
+Why is it Called Name Mangling?
+---------------------------------------------------------
+
+Python automatically changes
+
+    __balance
+
+into
+
+    _BankAccount__balance
+
+This process of changing the variable name is called
+"Name Mangling."
+
+---------------------------------------------------------
+Purpose of Name Mangling
+---------------------------------------------------------
+
+    • Prevent accidental access to private members.
+    • Prevent accidental overriding in inheritance.
+    • Reduce naming conflicts between parent and child classes.
+    • Support encapsulation by convention.
+
+=========================================================
+      WHY PYTHON PRIVATE MEMBERS ARE NOT TRULY PRIVATE
+=========================================================
+
+Python does not provide true private members.
+
+Instead, it relies on Name Mangling and trusts programmers
+to follow coding conventions.
+
+Python Philosophy:
+
+    "We are all consenting adults here."
+
+Meaning:
+
+    Python assumes programmers will use private members
+    responsibly and will not access them unless absolutely
+    necessary.
+
+Example:
+
+    class Student:
+
+        def __init__(self):
+            self.__marks = 90
+
+    s = Student()
+
+    print(s._Student__marks)
+
+Output:
+
+    90
+
+Therefore, Python private members can still be accessed
+using their mangled names.
+
+Hence,
+
+    Python provides Weak Encapsulation.
+
+=========================================================
+     WHY JAVA AND C++ PRIVATE MEMBERS ARE TRULY PRIVATE
+=========================================================
+
+Java:
+
+    class Student{
+
+        private int marks = 90;
+    }
+
+    Student s = new Student();
+
+    System.out.println(s.marks);
+
+Output:
+
+    Compile-Time Error
+
+Reason:
+
+    The Java compiler completely blocks access to private
+    members from outside the class.
+
+---------------------------------------------------------
+
+C++:
+
+    class Student
+    {
+    private:
+        int marks = 90;
+    };
+
+    Student s;
+
+    cout << s.marks;
+
+Output:
+
+    Compile-Time Error
+
+Reason:
+
+    C++ also enforces private access during compilation.
+
+=========================================================
+            PYTHON vs JAVA vs C++
+=========================================================
+
+Feature                     Python          Java          C++
+---------------------------------------------------------------
+Private Keyword             __variable      private       private
+True Privacy                No              Yes           Yes
+Name Mangling               Yes             No            No
+Accessible Outside Class    Yes             No            No
+Compiler Enforces Privacy   No              Yes           Yes
+
+=========================================================
+      MAIN PURPOSE OF NAME MANGLING IN INHERITANCE
+=========================================================
+
+Without Name Mangling:
+
+    class Parent:
+
+        def __init__(self):
+            self.value = 10
+
+    class Child(Parent):
+
+        def __init__(self):
+            super().__init__()
+            self.value = 20
+
+Result:
+
+    Child overwrites the parent's variable.
+
+---------------------------------------------------------
+
+With Name Mangling:
+
+    class Parent:
+
+        def __init__(self):
+            self.__value = 10
+
+    class Child(Parent):
+
+        def __init__(self):
+            super().__init__()
+            self.__value = 20
+
+Internally:
+
+    Parent  -> _Parent__value
+
+    Child   -> _Child__value
+
+Result:
+
+    Both variables exist separately.
+    The child's variable does not overwrite the parent's
+    private variable.
+
+=========================================================
+                    KEY POINTS
+=========================================================
+
+• Name Mangling changes:
+
+      __variable
+
+  into
+
+      _ClassName__variable
+
+• It is not a security feature.
+
+• It prevents accidental access and accidental overriding.
+
+• Python private members are weakly private because they
+  can still be accessed using the mangled name.
+
+• Java and C++ provide true private members because the
+  compiler completely prevents outside access.
+
+• Name Mangling mainly exists to support encapsulation
+  and avoid naming conflicts in inheritance.

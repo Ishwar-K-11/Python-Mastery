@@ -1,0 +1,115 @@
+# Single Inheritance
+
+class Person:
+    def introduce(self):
+        print("I am a Person")
+
+class Student(Person):
+    def study(self):
+        print("Student is studying")
+
+s = Student()
+
+s.introduce()
+s.study()
+
+
+
+# Multiple Inheritance
+
+class Camera:
+    def click(self):
+        print("Camera Clicked")
+
+class MusicPlayer:
+    def play(self):
+        print("Playing Music")
+
+class SmartPhone(Camera, MusicPlayer):
+    pass
+
+phone = SmartPhone()
+
+phone.click()
+phone.play()
+
+
+
+
+
+
+# Multilevel Inheritance
+class Animal:
+    def eat(self):
+        print("Animal Eats")
+
+class Dog(Animal):
+    def bark(self):
+        print("Dog Barks")
+
+class Puppy(Dog):
+    def sleep(self):
+        print("Puppy Sleeps")
+
+p = Puppy()
+
+p.eat()
+p.bark()
+p.sleep()
+
+
+
+
+
+
+
+# Hierarchical Inheritance
+
+class Employee:
+    def work(self):
+        print("Employee Works")
+
+class Manager(Employee):
+    def manage(self):
+        print("Manager Manages")
+
+class Developer(Employee):
+    def code(self):
+        print("Developer Writes Code")
+
+m = Manager()
+d = Developer()
+
+m.work()
+m.manage()
+
+d.work()
+d.code()
+
+
+
+
+
+
+# Hybrid Inheritance
+
+class LivingThing:
+    def live(self):
+        print("Living Thing")
+
+class Bird(LivingThing):
+    def fly(self):
+        print("Bird Flies")
+
+class Fish(LivingThing):
+    def swim(self):
+        print("Fish Swims")
+
+class Duck(Bird, Fish):
+    pass
+
+d = Duck()
+
+d.live()
+d.fly()
+d.swim()

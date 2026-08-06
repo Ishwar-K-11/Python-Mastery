@@ -33,3 +33,6 @@ student1 = Student("Aniket", 20, [77, 56, 87, 99])
 total = student1.Total_Marks()
 avg = student1.averge()
 student1.grade()
+
+
+# Always keep in mind that the __init__ function never return anything mostly used to initialize a value

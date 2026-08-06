@@ -1,0 +1,241 @@
+=========================================
+            INHERITANCE IN PYTHON
+=========================================
+
+What is Inheritance?
+--------------------
+    Inheritance is an OOP concept that allows one class (child class)
+    to inherit the properties (attributes) and behaviors (methods)
+    of another class (parent class).
+
+    It promotes:
+    • Code Reusability
+    • Maintainability
+    • Hierarchical Relationships
+
+Syntax:
+-------
+    class Parent:
+        pass
+
+    class Child(Parent):
+        pass
+
+
+Advantages of Inheritance
+-------------------------
+    • Reduces code duplication.
+    • Promotes code reusability.
+    • Improves code maintainability.
+    • Supports Method Overriding.
+    • Supports Polymorphism.
+    • Creates an "is-a" relationship.
+
+
+Types of Inheritance
+--------------------
+    1. Single Inheritance
+    2. Multiple Inheritance
+    3. Multilevel Inheritance
+    4. Hierarchical Inheritance
+    5. Hybrid Inheritance
+
+
+1. Single Inheritance
+---------------------
+    Definition:
+    A child class inherits from one parent class.
+
+    Example:
+    class Animal:
+        def sound(self):
+            print("Animal makes a sound")
+
+    class Dog(Animal):
+        def bark(self):
+            print("Dog Barks")
+
+    dog = Dog()
+    dog.sound()
+    dog.bark()
+
+
+2. Multiple Inheritance
+-----------------------
+    Definition:
+    A child class inherits from more than one parent class.
+
+    Example:
+    class Father:
+        def father_property(self):
+            print("Father Property")
+
+    class Mother:
+        def mother_property(self):
+            print("Mother Property")
+
+    class Child(Father, Mother):
+        pass
+
+    child = Child()
+    child.father_property()
+    child.mother_property()
+
+
+3. Multilevel Inheritance
+-------------------------
+    Definition:
+    A child class inherits from another child class.
+
+    Example:
+    class Grandfather:
+        def house(self):
+            print("House")
+
+    class Father(Grandfather):
+        def car(self):
+            print("Car")
+
+    class Son(Father):
+        def bike(self):
+            print("Bike")
+
+    son = Son()
+    son.house()
+    son.car()
+    son.bike()
+
+
+4. Hierarchical Inheritance
+---------------------------
+    Definition:
+    Multiple child classes inherit from the same parent class.
+
+    Example:
+    class Animal:
+        def eat(self):
+            print("Eating")
+
+    class Dog(Animal):
+        pass
+
+    class Cat(Animal):
+        pass
+
+    dog = Dog()
+    cat = Cat()
+
+    dog.eat()
+    cat.eat()
+
+
+5. Hybrid Inheritance
+---------------------
+    Definition:
+    A combination of two or more inheritance types.
+
+    Example:
+    class A:
+        pass
+
+    class B(A):
+        pass
+
+    class C(A):
+        pass
+
+    class D(B, C):
+        pass
+
+
+=========================================
+           super() Function
+=========================================
+
+    Definition:
+    The super() function is used to call the parent class constructor
+    or methods from the child class.
+
+    Example:
+    class Person:
+        def __init__(self, name):
+            self.name = name
+
+    class Student(Person):
+        def __init__(self, name, roll):
+            super().__init__(name)
+            self.roll = roll
+
+
+=========================================
+          Method Overriding
+=========================================
+
+Definition:
+    Method overriding occurs when a child class provides its own
+    implementation of a method already defined in the parent class.
+
+    Example:
+    class Animal:
+        def sound(self):
+            print("Animal Sound")
+
+    class Dog(Animal):
+        def sound(self):
+            print("Dog Barks")
+
+    dog = Dog()
+    dog.sound()
+
+
+=========================================
+      Method Resolution Order (MRO)
+=========================================
+
+Definition:
+    MRO (Method Resolution Order) is the order in which Python
+    searches for methods and attributes in inheritance.
+
+    Use:
+    • ClassName.mro()
+    • ClassName.__mro__
+
+    Example:
+    class A:
+        pass
+
+    class B(A):
+        pass
+
+    class C(A):
+        pass
+
+    class D(B, C):
+        pass
+
+    print(D.mro())
+
+
+=========================================
+             Parent vs Child
+=========================================
+
+Parent Class:
+-------------
+A class whose properties and methods are inherited by another class.
+
+Child Class:
+------------
+A class that inherits the properties and methods of the parent class.
+
+
+=========================================
+               Summary
+=========================================
+
+Inheritance        -> Reuse code from another class.
+Parent Class       -> Base class.
+Child Class        -> Derived class.
+super()            -> Calls parent constructor/method.
+Method Overriding  -> Redefines parent method.
+MRO                -> Search order for methods.

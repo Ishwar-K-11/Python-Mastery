@@ -1,0 +1,102 @@
+=========================================================
+                 PYTHON ENCAPSULATION
+=========================================================
+
+Definition:
+    Encapsulation is one of the four main principles of Object-Oriented
+    Programming (OOP). It is the process of wrapping data (variables)
+    and methods (functions) into a single unit called a class while
+    restricting direct access to the data.
+
+Purpose:
+    • Protect object data from unauthorized access.
+    • Improve data security.
+    • Hide internal implementation details.
+    • Allow controlled access through methods.
+
+---------------------------------------------------------
+Access Modifiers in Python
+---------------------------------------------------------
+
+1) Public Members
+    • Accessible from anywhere.
+    • Declared normally (no special prefix).
+
+    Example:
+        class Student:
+            def __init__(self):
+                self.name = "Ishwar"
+
+2) Protected Members
+    • Intended for internal use within the class and its subclasses.
+    • Declared using a single underscore (_).
+    • Can still be accessed from outside (by convention only).
+
+    Example:
+        class Student:
+            def __init__(self):
+                self._roll = 101
+
+3) Private Members
+    • Intended to be accessed only inside the class.
+    • Declared using double underscores (__).
+    • Python performs Name Mangling to reduce direct access.
+
+    Example:
+        class Student:
+            def __init__(self):
+                self.__marks = 95
+
+---------------------------------------------------------
+Getter and Setter Methods
+---------------------------------------------------------
+
+Getter:
+    • Used to read (get) the value of a private variable.
+
+Setter:
+    • Used to modify (set) the value of a private variable.
+    • Can include validation before updating the value.
+
+Example:
+
+    class Student:
+
+        def __init__(self):
+            self.__marks = 0
+
+        def get_marks(self):
+            return self.__marks
+
+        def set_marks(self, marks):
+            if 0 <= marks <= 100:
+                self.__marks = marks
+
+---------------------------------------------------------
+Advantages of Encapsulation
+---------------------------------------------------------
+
+    • Provides data hiding.
+    • Improves security.
+    • Makes code more organized.
+    • Prevents accidental modification of data.
+    • Makes programs easier to maintain and update.
+
+---------------------------------------------------------
+Disadvantages of Encapsulation
+---------------------------------------------------------
+
+    • Requires additional methods (getters/setters).
+    • Slightly increases code length.
+    • May increase complexity for very small programs.
+
+---------------------------------------------------------
+Key Points
+---------------------------------------------------------
+
+    • Encapsulation = Data + Methods in one class.
+    • Public members      → self.name
+    • Protected members   → self._name
+    • Private members     → self.__name
+    • Private members are accessed using Getter and Setter methods.
+    • Encapsulation improves security and code maintainability.
