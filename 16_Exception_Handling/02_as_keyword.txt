@@ -1,0 +1,64 @@
+=========================================
+      'as' KEYWORD IN EXCEPTION HANDLING
+=========================================
+
+Definition:
+-----------
+    The 'as' keyword stores the generated exception object
+    inside a variable.
+
+    It allows us to display the actual error message instead
+    of printing a general message.
+
+    Syntax:
+    -------
+
+    try:
+        # Code
+
+    except Exception as e:
+        print(e)
+
+-----------------------------------------
+Example
+-----------------------------------------
+
+    try:
+        num = 10 / 0
+
+    except Exception as e:
+        print("Error:", e)
+
+    Output:
+    -------
+    Error: division by zero
+
+-----------------------------------------
+Why Use 'as'?
+-----------------------------------------
+
+    • Displays the actual error.
+    • Makes debugging easier.
+    • Helps identify the cause of an exception.
+    • Can be used for logging errors.
+
+-----------------------------------------
+Important Points
+-----------------------------------------
+
+    • e is just a variable name.
+    • Any valid variable name can be used.
+    • Exception is the parent class of almost all exceptions.
+    • The stored exception object contains detailed information.
+
+-----------------------------------------
+Summary
+-----------------------------------------
+
+    Exception as e
+        │
+        ▼
+    Stores the exception object
+        │
+        ▼
+    Displays the actual error message

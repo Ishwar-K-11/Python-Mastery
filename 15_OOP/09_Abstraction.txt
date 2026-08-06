@@ -1,0 +1,242 @@
+=========================================
+        ABSTRACTION IN PYTHON
+=========================================
+
+Definition:
+-----------
+    Abstraction is the process of hiding the internal implementation
+    details and showing only the essential features of an object.
+
+    In simple words:
+    The user knows "what" an object does, but not "how" it does it.
+
+    Real-Life Example:
+    ------------------
+    ATM Machine
+    - You can withdraw money, check balance, and deposit money.
+    - You don't know how the ATM communicates with the bank internally.
+
+    Car
+    - You press the accelerator to increase speed.
+    - You don't need to know how the engine works internally.
+
+-----------------------------------------
+Why is Abstraction Used?
+-----------------------------------------
+
+    1. Hides unnecessary implementation details.
+    2. Increases security by restricting direct access.
+    3. Makes programs easier to understand.
+    4. Improves code maintainability.
+    5. Allows developers to focus on essential features.
+
+-----------------------------------------
+Abstract Class
+-----------------------------------------
+
+    An Abstract Class is a class that cannot be instantiated (object
+    cannot be created).
+
+    It is used only as a blueprint for other classes.
+
+    An abstract class may contain:
+    - Abstract methods
+    - Normal methods
+    - Constructors
+    - Variables
+
+    Python provides the abc (Abstract Base Class) module
+    to create abstract classes.
+
+    Syntax:
+    -------
+
+    from abc import ABC, abstractmethod
+
+    class Shape(ABC):
+
+        @abstractmethod
+        def area(self):
+            pass
+
+-----------------------------------------
+Abstract Method
+-----------------------------------------
+
+    An abstract method is a method that has only a declaration
+    and no implementation.
+
+    Every child class MUST override the abstract method.
+
+    Syntax:
+    -------
+
+    @abstractmethod
+    def method_name(self):
+        pass
+
+-----------------------------------------
+Example:
+-----------------------------------------
+
+    from abc import ABC, abstractmethod
+
+    class Shape(ABC):
+
+        @abstractmethod
+        def area(self):
+            pass
+
+
+    class Rectangle(Shape):
+
+        def __init__(self, length, width):
+            self.length = length
+            self.width = width
+
+        def area(self):
+            return self.length * self.width
+
+
+    class Circle(Shape):
+
+        def __init__(self, radius):
+            self.radius = radius
+
+        def area(self):
+            return 3.14159 * self.radius * self.radius
+
+
+    r = Rectangle(10, 5)
+    c = Circle(7)
+
+    print("Rectangle Area:", r.area())
+    print("Circle Area:", c.area())
+
+    Output:
+    -------
+    Rectangle Area: 50
+    Circle Area: 153.93791
+
+-----------------------------------------
+Cannot Create Object of Abstract Class
+-----------------------------------------
+
+    from abc import ABC, abstractmethod
+
+    class Shape(ABC):
+
+        @abstractmethod
+        def area(self):
+            pass
+
+    s = Shape()
+
+    Output:
+    -------
+    TypeError:
+    Can't instantiate abstract class Shape
+    with abstract method area
+
+-----------------------------------------
+What Happens if Child Class
+Does Not Override?
+-----------------------------------------
+
+    from abc import ABC, abstractmethod
+
+    class Shape(ABC):
+
+        @abstractmethod
+        def area(self):
+            pass
+
+
+    class Rectangle(Shape):
+        pass
+
+    r = Rectangle()
+
+    Output:
+    -------
+    TypeError:
+    Can't instantiate abstract class Rectangle
+    with abstract method area
+
+-----------------------------------------
+Abstract Class vs Concrete Class
+-----------------------------------------
+
+    Abstract Class
+    --------------
+    - Cannot create objects.
+    - Contains one or more abstract methods.
+    - Acts as a blueprint.
+    - Must be inherited.
+
+    Concrete Class
+    --------------
+    - Objects can be created.
+    - Provides complete implementation.
+    - Can be used directly.
+
+    -----------------------------------------
+    Difference Between
+    Abstraction and Encapsulation
+    -----------------------------------------
+
+    Abstraction
+    -----------
+    - Hides implementation details.
+    - Focuses on "What" an object does.
+    - Achieved using abstract classes and abstract methods.
+
+    Encapsulation
+    -------------
+    - Hides data by restricting access.
+    - Focuses on "How" data is protected.
+    - Achieved using classes and access modifiers
+    (public, protected, private).
+
+-----------------------------------------
+Advantages of Abstraction
+-----------------------------------------
+
+    • Reduces code complexity.
+    • Improves security.
+    • Promotes code reusability.
+    • Makes maintenance easier.
+    • Provides a standard interface for child classes.
+
+-----------------------------------------
+Disadvantages of Abstraction
+-----------------------------------------
+
+    • Slightly increases code complexity.
+    • Requires inheritance.
+    • Can be difficult for beginners.
+
+-----------------------------------------
+Important Points
+-----------------------------------------
+
+    • Abstraction hides implementation details.
+    • Python uses the abc module for abstraction.
+    • ABC stands for Abstract Base Class.
+    • @abstractmethod is used to declare an abstract method.
+    • Objects of abstract classes cannot be created.
+    • Every child class must implement all abstract methods.
+    • Abstract classes can have constructors, variables,
+      normal methods, and abstract methods.
+
+-----------------------------------------
+Summary
+-----------------------------------------
+
+    Abstraction         -> Hides implementation details
+    ABC                 -> Abstract Base Class
+    abc module          -> Used for abstraction
+    @abstractmethod     -> Declares an abstract method
+    Abstract Class      -> Cannot create objects
+    Child Class         -> Must override abstract methods
+    Purpose             -> Show "What", hide "How"

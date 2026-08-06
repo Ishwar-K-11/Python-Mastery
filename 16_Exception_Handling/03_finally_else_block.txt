@@ -1,0 +1,132 @@
+=========================================
+     finally BLOCK AND else BLOCK
+=========================================
+
+-----------------------------------------
+finally Block
+-----------------------------------------
+
+    Definition:
+    -----------
+    The finally block always executes whether an exception
+    occurs or not.
+
+    It is mainly used for cleanup operations.
+
+    Examples:
+    ---------
+    • Closing files
+    • Closing database connections
+    • Releasing network resources
+
+    Syntax:
+    -------
+
+    try:
+        # Code
+
+    except:
+        # Handle exception
+
+    finally:
+        # Always executes
+
+    Example:
+    --------
+
+    try:
+        print(10 / 2)
+
+    except:
+        print("Error")
+
+    finally:
+        print("Program Finished")
+
+    Output:
+    -------
+    5.0
+    Program Finished
+
+
+
+-----------------------------------------
+else Block
+-----------------------------------------
+
+    Definition:
+    -----------
+    The else block executes only if no exception occurs
+    inside the try block.
+
+    If an exception occurs,
+    the else block is skipped.
+
+    Syntax:
+    -------
+
+    try:
+        # Code
+
+    except:
+        # Handle exception
+
+    else:
+        # Executes when no exception occurs
+
+    Example:
+    --------
+
+    try:
+        print(20 / 5)
+
+    except:
+        print("Error")
+
+    else:
+        print("Division Successful")
+
+    Output:
+    -------
+    4.0
+    Division Successful
+
+-----------------------------------------
+Difference
+-----------------------------------------
+
+    else
+    ----
+    • Executes only if no exception occurs.
+    • Used for code that should run after successful execution.
+
+    finally
+    -------
+    • Executes whether an exception occurs or not.
+    • Used for cleanup operations.
+
+-----------------------------------------
+Execution Flow
+-----------------------------------------
+
+    try
+    │
+    ▼
+    Exception?
+    │
+    ├── No ──► else
+    │            │
+    │            ▼
+    │         finally
+    │
+    └── Yes ─► except
+                │
+                ▼
+            finally
+
+-----------------------------------------
+Summary
+-----------------------------------------
+
+    else      -> Runs only when no exception occurs.
+    finally   -> Always executes.

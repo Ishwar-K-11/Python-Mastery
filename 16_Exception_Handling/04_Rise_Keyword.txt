@@ -1,0 +1,56 @@
+=========================================
+         raise KEYWORD IN PYTHON
+=========================================
+
+Definition:
+-----------
+    The raise keyword is used to manually generate an
+    exception.
+
+    It allows the programmer to stop program execution
+    when an invalid condition is detected.
+
+    Syntax:
+    -------
+
+    raise Exception("Message")
+
+-----------------------------------------
+Example
+-----------------------------------------
+
+    age = -5
+
+    if age < 0:
+        raise ValueError("Age cannot be negative.")
+
+    Output:
+    -------
+    ValueError: Age cannot be negative.
+
+-----------------------------------------
+Why Use raise?
+-----------------------------------------
+
+    • To generate custom errors.
+    • To validate user input.
+    • To stop execution when invalid data is found.
+    • To improve program reliability.
+
+-----------------------------------------
+Important Points
+-----------------------------------------
+
+    • raise manually creates an exception.
+    • It can raise built-in or custom exceptions.
+    • Execution stops immediately after raise unless
+      the exception is handled.
+
+-----------------------------------------
+Summary
+-----------------------------------------
+
+    raise
+      │
+      ▼
+    Manually generates an exception

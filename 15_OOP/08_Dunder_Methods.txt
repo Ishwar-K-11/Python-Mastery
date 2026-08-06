@@ -1,0 +1,342 @@
+=========================================
+            DUNDER METHODS
+        (Magic / Special Methods)
+=========================================
+
+Definition:
+-----------
+    Dunder methods (Double Underscore Methods), also called Magic Methods
+    or Special Methods, are predefined methods in Python whose names start
+    and end with double underscores (__).
+
+    They allow objects to interact with Python's built-in functions,
+    operators, and language features.
+
+    Syntax:
+    -------
+    def __method_name__(self):
+        pass
+
+    Example:
+    --------
+    class Student:
+        def __init__(self, name):
+            self.name = name
+
+    s = Student("Ishwar")
+
+-----------------------------------------
+Why are Dunder Methods Used?
+-----------------------------------------
+
+    1. To automatically initialize objects.
+    2. To define how objects are printed.
+    3. To overload operators (+, -, ==, etc.).
+    4. To customize object behavior.
+    5. To make user-defined objects behave like built-in objects.
+
+-----------------------------------------
+Common Dunder Methods
+-----------------------------------------
+
+    1. __init__()
+    --------------
+    Purpose:
+    Called automatically when an object is created.
+    Used to initialize object variables.
+
+    Example:
+    class Student:
+        def __init__(self, name):
+            self.name = name
+
+    s = Student("Ishwar")
+
+-----------------------------------------
+
+2. __str__()
+-------------
+    Purpose:
+    Returns a user-friendly string representation of an object.
+    Called by print(object).
+
+    Example:
+    class Student:
+        def __str__(self):
+            return "Student Object"
+
+    s = Student()
+    print(s)
+
+    Output:
+    Student Object
+
+-----------------------------------------
+
+3. __repr__()
+--------------
+    Purpose:
+    Returns the official string representation of an object.
+    Mainly used for debugging.
+
+    Example:
+    class Student:
+        def __repr__(self):
+            return "Student()"
+
+    s = Student()
+    print(repr(s))
+
+    Output:
+    Student()
+
+-----------------------------------------
+
+4. __len__()
+-------------
+    Purpose:
+    Returns the length of an object.
+    Called by len().
+
+    Example:
+    class Numbers:
+        def __len__(self):
+            return 5
+
+    n = Numbers()
+    print(len(n))
+
+    Output:
+    5
+
+-----------------------------------------
+
+5. __add__()
+-------------
+    Purpose:
+    Overloads the + operator.
+
+    Example:
+    class Number:
+        def __init__(self, value):
+            self.value = value
+
+        def __add__(self, other):
+            return self.value + other.value
+
+    a = Number(10)
+    b = Number(20)
+
+    print(a + b)
+
+    Output:
+    30
+
+-----------------------------------------
+
+6. __sub__()
+-------------
+    Purpose:
+    Overloads the - operator.
+
+    Example:
+    def __sub__(self, other):
+        return self.value - other.value
+
+-----------------------------------------
+
+7. __mul__()
+-------------
+    Purpose:
+    Overloads the * operator.
+
+    Example:
+    def __mul__(self, other):
+        return self.value * other.value
+
+-----------------------------------------
+
+8. __truediv__()
+-----------------
+    Purpose:
+    Overloads the / operator.
+
+    Example:
+    def __truediv__(self, other):
+        return self.value / other.value
+
+-----------------------------------------
+
+9. __eq__()
+------------
+    Purpose:
+    Overloads the == operator.
+
+    Example:
+    def __eq__(self, other):
+        return self.value == other.value
+
+-----------------------------------------
+
+10. __lt__()
+-------------
+    Purpose:
+    Overloads the < operator.
+
+    Example:
+    def __lt__(self, other):
+        return self.value < other.value
+
+-----------------------------------------
+
+11. __gt__()
+-------------
+    Purpose:
+    Overloads the > operator.
+
+    Example:
+    def __gt__(self, other):
+        return self.value > other.value
+
+-----------------------------------------
+
+12. __contains__()
+-------------------
+    Purpose:
+    Defines the behavior of the 'in' operator.
+
+    Example:
+    class Data:
+        def __contains__(self, item):
+            return item == 10
+
+    d = Data()
+
+    print(10 in d)
+
+    Output:
+    True
+
+-----------------------------------------
+
+13. __getitem__()
+------------------
+    Purpose:
+    Allows indexing using [].
+
+    Example:
+    class Data:
+        def __getitem__(self, index):
+            return index * 10
+
+    d = Data()
+
+    print(d[3])
+
+    Output:
+    30
+
+-----------------------------------------
+
+14. __setitem__()
+------------------
+    Purpose:
+    Allows assigning values using [].
+
+    Example:
+    def __setitem__(self, key, value):
+        print(key, value)
+
+-----------------------------------------
+
+15. __delitem__()
+------------------
+    Purpose:
+    Called when deleting an item using del.
+
+    Example:
+    def __delitem__(self, key):
+        print("Deleted", key)
+
+-----------------------------------------
+
+16. __call__()
+---------------
+    Purpose:
+    Allows an object to be called like a function.
+
+    Example:
+    class Student:
+        def __call__(self):
+            print("Object Called")
+
+    s = Student()
+    s()
+
+    Output:
+    Object Called
+
+-----------------------------------------
+
+17. __del__()
+--------------
+    Purpose:
+    Called before an object is destroyed.
+    Used for cleanup tasks.
+
+    Example:
+    class Student:
+        def __del__(self):
+            print("Object Destroyed")
+
+-----------------------------------------
+
+Difference Between __str__() and __repr__()
+-----------------------------------------
+
+    __str__()
+    ---------
+    - Used for users.
+    - Gives a readable representation.
+    - Called by print().
+
+    __repr__()
+    ----------
+    - Used for developers.
+    - Gives an official representation.
+    - Called by repr().
+
+-----------------------------------------
+
+Important Points
+-----------------------------------------
+
+    • Dunder means Double Under ( __ ).
+    • They are also called Magic Methods or Special Methods.
+    • Python automatically calls these methods when needed.
+    • They are used to customize the behavior of objects.
+    • Operator overloading in Python is achieved using dunder methods.
+    • __init__() is the most commonly used dunder method.
+    • You should not call most dunder methods directly; instead, use the corresponding Python operation (e.g., use len(obj) instead of obj.__len__()).
+
+-----------------------------------------
+Summary
+-----------------------------------------
+
+    __init__()        -> Initialize object
+    __str__()         -> User-friendly string
+    __repr__()        -> Official string representation
+    __len__()         -> Length of object
+    __add__()         -> +
+    __sub__()         -> -
+    __mul__()         -> *
+    __truediv__()     -> /
+    __eq__()          -> ==
+    __lt__()          -> <
+    __gt__()          -> >
+    __contains__()    -> in
+    __getitem__()     -> []
+    __setitem__()     -> [] =
+    __delitem__()     -> del obj[]
+    __call__()        -> Object behaves like a function
+    __del__()         -> Called before object destruction

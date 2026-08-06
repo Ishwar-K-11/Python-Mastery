@@ -1,0 +1,151 @@
+=========================================
+      EXCEPTION HANDLING IN PYTHON
+=========================================
+
+Definition:
+-----------
+    Exception Handling is a mechanism used to detect and handle
+    runtime errors so that the normal flow of the program is not
+    interrupted.
+
+    Instead of terminating the program when an error occurs,
+    Python allows us to handle the error gracefully.
+
+    In simple words:
+    Exception handling prevents a program from crashing due to
+    runtime errors.
+
+
+
+-----------------------------------------
+Why is Exception Handling Needed?
+-----------------------------------------
+
+    1. Prevents the program from crashing.
+    2. Handles runtime errors gracefully.
+    3. Improves the reliability of the program.
+    4. Allows the remaining code to execute.
+    5. Makes debugging and maintenance easier.
+
+
+
+-----------------------------------------
+What is an Exception?
+-----------------------------------------
+
+    An exception is an event that occurs during program execution
+    which interrupts the normal flow of the program.
+
+    Example:
+    --------
+
+    num1 = 10
+    num2 = 0
+
+    print(num1 / num2)
+
+    Output:
+    -------
+    ZeroDivisionError: division by zero
+
+    Without exception handling, the program stops immediately.
+
+
+
+-----------------------------------------
+Syntax
+-----------------------------------------
+
+    try:
+        # Risky code
+
+    except:
+        # Code to handle the exception
+
+
+
+-----------------------------------------
+Example
+-----------------------------------------
+
+    try:
+        num1 = 10
+        num2 = 0
+        print(num1 / num2)
+
+    except:
+        print("An error occurred.")
+
+    Output:
+    -------
+    An error occurred.
+
+
+
+-----------------------------------------
+Working of Exception Handling
+-----------------------------------------
+
+    Step 1:
+    The code inside the try block is executed.
+
+    Step 2:
+    If no exception occurs,
+    the except block is skipped.
+
+    Step 3:
+    If an exception occurs,
+    Python immediately stops executing the remaining statements
+    inside the try block.
+
+    Step 4:
+    Control is transferred to the except block.
+
+    Step 5:
+    After handling the exception,
+    the program continues executing the remaining code.
+
+
+
+-----------------------------------------
+Advantages
+-----------------------------------------
+
+    • Prevents program crashes.
+    • Improves reliability.
+    • Makes debugging easier.
+    • Separates normal code from error-handling code.
+    • Allows graceful recovery from runtime errors.
+
+
+
+-----------------------------------------
+Disadvantages
+-----------------------------------------
+
+    • Excessive use makes code harder to read.
+    • Improper handling may hide actual bugs.
+    • Slight performance overhead.
+
+
+
+-----------------------------------------
+Important Points
+-----------------------------------------
+
+    • Exceptions occur during runtime.
+    • try contains risky code.
+    • except handles exceptions.
+    • The program continues after handling the exception.
+    • Always use specific exceptions whenever possible.
+
+    
+
+-----------------------------------------
+Summary
+-----------------------------------------
+
+    Exception      -> Runtime error
+    try            -> Contains risky code
+    except         -> Handles exceptions
+    Purpose        -> Prevents program termination
