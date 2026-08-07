@@ -1,0 +1,161 @@
+=========================================================
+                CUSTOM EXCEPTIONS IN PYTHON
+=========================================================
+
+Definition
+----------
+	A custom exception is a user-defined exception created by inheriting
+	from Python's built-in Exception class. It is used to represent
+	application-specific errors that are not covered by Python's built-in
+	exceptions.
+
+
+Why Use Custom Exceptions?
+--------------------------
+	1. Makes the code more readable.
+	2. Represents business or application-specific errors.
+	3. Makes debugging easier.
+	4. Improves error handling.
+	5. Allows different errors to be handled separately.
+
+
+Syntax
+------
+	class CustomException(Exception):
+		pass
+
+
+=========================================================
+              EXAMPLE 1 : BASIC CUSTOM EXCEPTION
+=========================================================
+
+	class InvalidAgeError(Exception):
+		pass
+
+
+	def check_age(age):
+		if age < 18:
+			raise InvalidAgeError("Age must be at least 18.")
+
+
+	try:
+		check_age(16)
+
+	except InvalidAgeError as e:
+		print(e)
+
+
+Output
+------
+	Age must be at least 18.
+
+
+=========================================================
+      EXAMPLE 2 : CUSTOM EXCEPTION WITH CONSTRUCTOR
+=========================================================
+
+	class InvalidMarksError(Exception):
+
+		def __init__(self, marks):
+			self.marks = marks
+			super().__init__(
+				f"Invalid Marks: {marks}. Marks must be between 0 and 100."
+			)
+
+
+	def check_marks(marks):
+
+		if marks < 0 or marks > 100:
+			raise InvalidMarksError(marks)
+
+
+	try:
+		check_marks(120)
+
+	except InvalidMarksError as e:
+		print(e)
+
+
+Output
+------
+	Invalid Marks: 120. Marks must be between 0 and 100.
+
+
+=========================================================
+          EXAMPLE 3 : MULTIPLE CUSTOM EXCEPTIONS
+=========================================================
+
+	class NegativeAgeError(Exception):
+		pass
+
+
+	class OverAgeError(Exception):
+		pass
+
+
+	def validate_age(age):
+
+		if age < 0:
+			raise NegativeAgeError("Age cannot be negative.")
+
+		elif age > 150:
+			raise OverAgeError("Age cannot be greater than 150.")
+
+
+	try:
+		validate_age(200)
+
+	except NegativeAgeError as e:
+		print(e)
+
+	except OverAgeError as e:
+		print(e)
+
+
+Output
+------
+	Age cannot be greater than 150.
+
+
+=========================================================
+                BEST PRACTICES
+=========================================================
+
+	1. Always inherit from the Exception class.
+
+	2. Give meaningful exception names ending with "Error".
+	   Examples:
+			• InvalidAgeError
+			• InvalidPasswordError
+			• InsufficientBalanceError
+			• FileNotFoundCustomError
+
+	3. Use custom exceptions only for application-specific errors.
+
+	4. Provide clear and descriptive error messages.
+
+	5. Catch custom exceptions using try-except blocks whenever
+	   appropriate.
+
+
+=========================================================
+                    ADVANTAGES
+=========================================================
+
+	• Makes code easier to understand.
+	• Separates different types of errors.
+	• Simplifies debugging.
+	• Improves code maintainability.
+	• Makes applications more robust.
+	• Allows developers to define meaningful error conditions.
+
+
+=========================================================
+                     SUMMARY
+=========================================================
+
+	• Custom exceptions are user-defined exception classes.
+	• They inherit from Python's Exception class.
+	• They are raised using the raise keyword.
+	• They help handle application-specific errors.
+	• They improve readability, debugging, and maintainability.
