@@ -1,0 +1,100 @@
+                 PYTHON FILE HANDLING
+              readline() and readlines()
+
+
+1. readline()
+
+    The readline() function is used to read one line at a time
+    from a file.
+
+    Syntax:
+        file.readline()
+
+    Example:
+        file = open("data.txt", "r")
+
+        line = file.readline()
+        print(line)
+
+        file.close()
+
+    If data.txt contains:
+
+        Apple
+        Banana
+        Mango
+
+    The first readline() returns:
+
+        Apple
+
+    If readline() is called again, it reads the next line:
+
+        Banana
+
+
+    Important Points:
+        • Reads only one line at a time.
+        • Each call reads the next line.
+        • Returns the line as a string.
+        • Returns an empty string ("") when the end of the file
+          is reached.
+
+
+
+2. readlines()
+
+    The readlines() function is used to read all remaining lines
+    from a file at once.
+
+    Syntax:
+        file.readlines()
+
+    Example:
+        file = open("data.txt", "r")
+
+        lines = file.readlines()
+        print(lines)
+
+        file.close()
+
+    If data.txt contains:
+
+        Apple
+        Banana
+        Mango
+
+    The output will be:
+
+        ['Apple\n', 'Banana\n', 'Mango\n']
+
+
+    Important Points:
+        • Reads all remaining lines at once.
+        • Returns the lines as a list of strings.
+        • Each line becomes a separate element in the list.
+        • The newline character (\n) is usually included.
+
+
+
+3. Difference Between readline() and readlines()
+
+    readline()
+        → Reads one line at a time.
+        → Returns a string.
+        → Each call reads the next line.
+        → Useful for reading large files line by line.
+
+    readlines()
+        → Reads all remaining lines at once.
+        → Returns a list of strings.
+        → Each line is a separate element.
+        → May use more memory for large files.
+
+
+
+4. Easy Way to Remember
+
+        readline()   →   ONE line
+
+        readlines()  →   MANY lines → LIST

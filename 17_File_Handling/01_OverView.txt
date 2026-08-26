@@ -1,0 +1,212 @@
+=========================================================
+                 FILE HANDLING IN PYTHON
+=========================================================
+
+Definition
+----------
+	File handling is used to create, read, write, and modify
+	files stored on the computer.
+
+	Python provides the built-in open() function to work with files.
+
+
+=========================================================
+                  OPENING A FILE
+=========================================================
+
+	Syntax:
+
+		open(file, mode)
+
+
+	Example:
+
+		file = open("data.txt", "r")
+
+
+	Here:
+
+		"data.txt"  -> Name of the file
+		"r"         -> File opening mode
+
+
+=========================================================
+                  FILE OPENING MODES
+=========================================================
+
+	Mode		Use
+	----		-------------------------------------
+
+	"r"		Read an existing file.
+
+	"w"		Write to a file.
+			Creates the file if it does not exist.
+			Deletes existing content.
+
+	"a"		Append data to the end of a file.
+			Creates the file if it does not exist.
+
+	"x"		Create a new file.
+			Raises FileExistsError if the file exists.
+
+	"r+"		Read and write to a file.
+
+	"w+"		Write and read a file.
+			Existing content is removed.
+
+	"a+"		Append and read a file.
+
+
+=========================================================
+                  CLOSING A FILE
+=========================================================
+
+	After working with a file, it should be closed.
+
+	Example:
+
+		file = open("data.txt", "r")
+
+		# Perform file operations
+
+		file.close()
+
+
+	The close() method releases the resources associated
+	with the file.
+
+
+	Checking whether a file is closed:
+
+		print(file.closed)
+
+
+	Output:
+
+		True
+
+
+=========================================================
+              BASIC READ OPERATION
+=========================================================
+
+	Example:
+
+		file = open("data.txt", "r")
+
+		data = file.read()
+
+		print(data)
+
+		file.close()
+
+
+	read()
+	------
+		Reads the entire content of the file.
+
+
+=========================================================
+              BASIC WRITE OPERATION
+=========================================================
+
+	Example:
+
+		file = open("data.txt", "w")
+
+		file.write("Hello Python")
+
+		file.close()
+
+
+	write()
+	-------
+		Writes data into the file.
+
+
+=========================================================
+              BASIC APPEND OPERATION
+=========================================================
+
+	Example:
+
+		file = open("data.txt", "a")
+
+		file.write("\nHello World")
+
+		file.close()
+
+
+	append mode ("a")
+	-----------------
+	Adds new content at the end of the existing file
+	without removing the previous content.
+
+
+=========================================================
+                    IMPORTANT
+=========================================================
+
+	• Always close a file after using it.
+
+	• "r" requires the file to already exist.
+
+	• "w" removes the existing content before writing.
+
+	• "a" preserves existing content and adds new content
+	  at the end.
+
+	• "x" creates a new file and fails if the file already exists.
+
+	• open() returns a file object that can be used to
+	  perform file operations.
+
+
+=========================================================
+                 WITH OPEN() STATEMENT
+=========================================================
+
+	The with open() statement is used to open a file and
+	automatically close it after the block is completed.
+
+	Syntax:
+
+		with open("data.txt", "r") as file:
+			# File operations
+
+
+	Example:
+
+		with open("data.txt", "r") as file:
+			data = file.read()
+			print(data)
+
+
+	There is no need to use file.close() when using
+	with open().
+
+	The file is automatically closed when the with block
+	is completed.
+
+
+	Example:
+
+		with open("data.txt", "r") as file:
+			print(file.read())
+
+		# File is automatically closed here
+
+
+	Advantages of with open()
+	-------------------------
+
+	• Automatically closes the file.
+
+	• No need to manually call close().
+
+	• Safer if an exception occurs while working with
+	  the file.
+
+	• Makes the code cleaner and easier to read.
+
+	• Recommended approach for file handling in Python.

@@ -1,0 +1,83 @@
+=========================================================
+              LOOP THROUGH A FILE IN PYTHON
+=========================================================
+
+A file can be iterated directly using a for loop.
+
+Example:
+
+    with open("data.txt", "r") as file:
+        for line in file:
+            print(line)
+
+
+HOW IT WORKS
+------------
+
+    The file is read one line at a time.
+
+    Example file:
+
+        Apple
+        Banana
+        Mango
+
+    The loop processes:
+
+        Line 1 -> Apple
+        Line 2 -> Banana
+        Line 3 -> Mango
+
+
+WHY IS IT EFFECTIVE?
+--------------------
+
+    Suppose a file contains 1,000,000 lines.
+
+    Using:
+
+        data = file.read()
+
+    loads the entire file into memory.
+
+    Using:
+
+        for line in file:
+            process(line)
+
+    processes one line at a time.
+
+    Therefore:
+
+        • Lower memory usage
+        • Suitable for very large files
+        • Efficient for line-by-line processing
+        • Commonly used in real-world applications
+
+
+IMPORTANT
+---------
+
+    A file object is iterable.
+
+    Therefore:
+
+        for line in file:
+
+    is preferred over loading the entire file when
+    processing large files.
+
+
+INTERVIEW POINT
+---------------
+
+    Q: Why is iterating over a file better than
+       readlines() for a huge file?
+
+    A:
+
+        Iterating over the file processes lines lazily,
+        so the entire file does not need to be stored
+        in memory.
+
+        readlines() loads all remaining lines into a list.

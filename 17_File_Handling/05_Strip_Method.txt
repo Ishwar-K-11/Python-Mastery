@@ -1,0 +1,95 @@
+=========================================================
+                  strip() IN PYTHON
+=========================================================
+
+strip() is a string method used to remove whitespace
+from the beginning and end of a string.
+
+Syntax:
+
+    string.strip()
+
+
+Example:
+
+    text = "   Hello Python   "
+
+    print(text.strip())
+
+Output:
+
+    Hello Python
+
+
+WHAT DOES strip() REMOVE?
+-------------------------
+
+    • Spaces
+    • Tabs
+    • Newline characters (\n)
+    • Other leading/trailing whitespace
+
+
+FILE HANDLING USE
+-----------------
+
+When reading a file line by line, lines normally contain
+a newline character at the end.
+
+Example:
+
+    with open("data.txt", "r") as file:
+        for line in file:
+            print(line.strip())
+
+
+If the file contains:
+
+    Apple
+    Banana
+    Mango
+
+strip() converts:
+
+    "Apple\n"  ->  "Apple"
+    "Banana\n" ->  "Banana"
+    "Mango\n"  ->  "Mango"
+
+
+RELATED METHODS
+---------------
+
+lstrip()
+    Removes whitespace from the left side.
+
+rstrip()
+    Removes whitespace from the right side.
+
+strip()
+    Removes whitespace from both sides.
+
+
+IMPORTANT
+---------
+
+strip() does NOT remove spaces between words.
+
+Example:
+
+    "Hello   Python".strip()
+
+Result:
+
+    "Hello   Python"
+
+
+INTERVIEW POINT
+---------------
+
+Q: Why is strip() commonly used while reading files?
+
+A:
+
+    To remove unwanted leading/trailing whitespace,
+    especially the newline character (\n) at the end
+    of each line.

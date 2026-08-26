@@ -1,0 +1,447 @@
+=========================================================
+                  PATHLIB IN PYTHON
+              THE MODERN WAY TO HANDLE PATHS
+=========================================================
+
+pathlib is a built-in Python module used to work with
+files, directories and paths.
+
+It provides an object-oriented approach to path handling.
+
+Import:
+
+    from pathlib import Path
+
+
+=========================================================
+                    CREATING PATH
+=========================================================
+
+    path = Path("data.txt")
+
+Important:
+
+    Path("data.txt") creates a Path object.
+
+    It does NOT create the actual file.
+
+
+=========================================================
+                COMMON PATH METHODS
+=========================================================
+
+exists()
+---------------------------------------------------------
+
+    path.exists()
+
+Checks whether the path exists.
+
+
+is_file()
+---------------------------------------------------------
+
+    path.is_file()
+
+Checks whether the path is a file.
+
+
+is_dir()
+---------------------------------------------------------
+
+    path.is_dir()
+
+Checks whether the path is a directory.
+
+
+=========================================================
+                 READING AND WRITING
+=========================================================
+
+read_text()
+---------------------------------------------------------
+
+Reads the entire text file.
+
+    path.read_text()
+
+
+Example:
+
+    path = Path("data.txt")
+
+    data = path.read_text()
+
+    print(data)
+
+
+write_text()
+---------------------------------------------------------
+
+Writes text to a file.
+
+    path.write_text("Hello Python")
+
+
+Important:
+
+    If the file already exists, its content is replaced.
+
+
+open()
+---------------------------------------------------------
+
+Can be used when normal file modes are required.
+
+    with path.open("r") as file:
+        data = file.read()
+
+
+Append:
+
+    with path.open("a") as file:
+        file.write("\nNew Data")
+
+
+=========================================================
+                  FILE OPERATIONS
+=========================================================
+
+touch()
+---------------------------------------------------------
+
+Creates an empty file.
+
+    Path("data.txt").touch()
+
+
+unlink()
+---------------------------------------------------------
+
+Deletes a file.
+
+    Path("data.txt").unlink()
+
+
+rename()
+---------------------------------------------------------
+
+Renames a file.
+
+    path.rename("new.txt")
+
+
+=========================================================
+                DIRECTORY OPERATIONS
+=========================================================
+
+mkdir()
+---------------------------------------------------------
+
+Creates a directory.
+
+    Path("Documents").mkdir()
+
+
+Create nested directories:
+
+    Path("A/B/C").mkdir(parents=True)
+
+
+rmdir()
+---------------------------------------------------------
+
+Removes an empty directory.
+
+    Path("Documents").rmdir()
+
+
+iterdir()
+---------------------------------------------------------
+
+Lists contents of a directory.
+
+    path = Path("Documents")
+
+    for item in path.iterdir():
+        print(item)
+
+
+=========================================================
+                   PATH PROPERTIES
+=========================================================
+
+name
+    Returns file name.
+
+    Path("Documents/data.txt").name
+
+    -> data.txt
+
+
+stem
+    Returns filename without extension.
+
+    Path("data.txt").stem
+
+    -> data
+
+
+suffix
+    Returns file extension.
+
+    Path("data.txt").suffix
+
+    -> .txt
+
+
+parent
+    Returns parent directory.
+
+    Path("Documents/data.txt").parent
+
+    -> Documents
+
+
+=========================================================
+                 JOINING PATHS
+=========================================================
+
+Pathlib allows paths to be joined using /.
+
+    path = Path("Documents") / "Projects" / "data.txt"
+
+
+This is cleaner and safer than manually joining strings.
+
+It also works correctly across operating systems.
+
+
+=========================================================
+                   SEARCHING FILES
+=========================================================
+
+glob()
+---------------------------------------------------------
+
+Finds files matching a pattern.
+
+    for file in Path("Documents").glob("*.txt"):
+        print(file)
+
+
+rglob()
+---------------------------------------------------------
+
+Recursively searches subdirectories.
+
+    for file in Path("Documents").rglob("*.txt"):
+        print(file)
+
+
+Difference:
+
+    glob()  -> Searches the specified directory.
+
+    rglob() -> Searches recursively in subdirectories.
+
+
+=========================================================
+                OTHER USEFUL METHODS
+=========================================================
+
+resolve()
+    Returns the absolute path.
+
+    path.resolve()
+
+
+stat()
+    Returns file information.
+
+    path.stat().st_size
+
+    -> File size in bytes.
+
+
+with_suffix()
+    Changes file extension.
+
+    Path("data.txt").with_suffix(".csv")
+
+    -> data.csv
+
+
+with_name()
+    Changes file name.
+
+    Path("data.txt").with_name("report.txt")
+
+    -> report.txt
+
+
+Path.cwd()
+    Returns current working directory.
+
+    Path.cwd()
+
+
+=========================================================
+                 PATHLIB vs os.path
+=========================================================
+
+Traditional approach:
+
+    import os
+
+    path = os.path.join("Documents", "data.txt")
+
+    if os.path.exists(path):
+        print("Exists")
+
+
+Modern approach:
+
+    from pathlib import Path
+
+    path = Path("Documents") / "data.txt"
+
+    if path.exists():
+        print("Exists")
+
+
+WHY PATHLIB?
+------------
+
+    • Cleaner syntax
+    • Object-oriented
+    • Easier to read
+    • Cross-platform
+    • Provides path + file operations together
+    • Preferred for modern Python code
+
+
+=========================================================
+                INTERVIEW QUESTIONS
+=========================================================
+
+Q: What is pathlib?
+
+A:
+
+    pathlib is a built-in Python module that provides
+    an object-oriented way to work with file and
+    directory paths.
+
+
+Q: Why use pathlib instead of os.path?
+
+A:
+
+    pathlib provides a cleaner, more readable and
+    object-oriented API for path manipulation and
+    file-system operations.
+
+
+Q: Does Path("data.txt") create a file?
+
+A:
+
+    No. It only creates a Path object representing
+    that path.
+
+    To create the file:
+
+        Path("data.txt").touch()
+
+
+Q: Difference between glob() and rglob()?
+
+A:
+
+    glob() searches a directory according to a pattern.
+
+    rglob() performs the search recursively through
+    subdirectories.
+
+
+=========================================================
+                 MOST IMPORTANT PATHLIB
+=========================================================
+
+Path()
+    -> Create Path object
+
+exists()
+    -> Check existence
+
+is_file()
+    -> Check file
+
+is_dir()
+    -> Check directory
+
+read_text()
+    -> Read text
+
+write_text()
+    -> Write text
+
+open()
+    -> Open file
+
+touch()
+    -> Create file
+
+unlink()
+    -> Delete file
+
+rename()
+    -> Rename/move
+
+mkdir()
+    -> Create directory
+
+rmdir()
+    -> Remove empty directory
+
+iterdir()
+    -> List directory contents
+
+glob()
+    -> Pattern search
+
+rglob()
+    -> Recursive pattern search
+
+name
+    -> File name
+
+stem
+    -> File name without extension
+
+suffix
+    -> Extension
+
+parent
+    -> Parent directory
+
+resolve()
+    -> Absolute path
+
+stat()
+    -> File information
+
+
+=========================================================
+                     KEY IDEA
+=========================================================
+
+    os.path
+        -> Traditional path handling.
+
+    pathlib
+        -> Modern, object-oriented path handling.
+
+    For modern Python projects, pathlib is generally
+    preferred for working with paths.

@@ -1,0 +1,185 @@
+=========================================================
+                 OS MODULE AND os.path
+=========================================================
+
+The os module provides functions for interacting with
+the operating system.
+
+Import:
+
+    import os
+
+
+=========================================================
+                    os.path
+=========================================================
+
+os.path is mainly used for working with file and
+directory paths.
+
+
+1. exists()
+---------------------------------------------------------
+
+Checks whether a path exists.
+
+    os.path.exists("data.txt")
+
+Returns:
+
+    True / False
+
+
+2. isfile()
+---------------------------------------------------------
+
+Checks whether the path is a file.
+
+    os.path.isfile("data.txt")
+
+
+3. isdir()
+---------------------------------------------------------
+
+Checks whether the path is a directory.
+
+    os.path.isdir("Documents")
+
+
+4. getsize()
+---------------------------------------------------------
+
+Returns file size in bytes.
+
+    os.path.getsize("data.txt")
+
+
+5. basename()
+---------------------------------------------------------
+
+Returns the final part of a path.
+
+    os.path.basename("Documents/data.txt")
+
+Result:
+
+    data.txt
+
+
+6. dirname()
+---------------------------------------------------------
+
+Returns the directory part of a path.
+
+    os.path.dirname("Documents/data.txt")
+
+Result:
+
+    Documents
+
+
+7. join()
+---------------------------------------------------------
+
+Combines path components.
+
+    path = os.path.join("Documents", "data.txt")
+
+
+8. abspath()
+---------------------------------------------------------
+
+Returns the absolute path.
+
+    os.path.abspath("data.txt")
+
+
+9. relpath()
+---------------------------------------------------------
+
+Returns the relative path.
+
+    os.path.relpath("Documents/data.txt", "Documents")
+
+
+10. splitext()
+---------------------------------------------------------
+
+Splits filename and extension.
+
+    os.path.splitext("data.txt")
+
+Result:
+
+    ("data", ".txt")
+
+
+=========================================================
+                  OTHER os FUNCTIONS
+=========================================================
+
+rename()
+---------------------------------------------------------
+
+Renames or moves a file.
+
+    os.rename("old.txt", "new.txt")
+
+
+remove()
+---------------------------------------------------------
+
+Deletes a file.
+
+    os.remove("data.txt")
+
+
+mkdir()
+---------------------------------------------------------
+
+Creates a directory.
+
+    os.mkdir("Documents")
+
+
+rmdir()
+---------------------------------------------------------
+
+Removes an empty directory.
+
+    os.rmdir("Documents")
+
+
+listdir()
+---------------------------------------------------------
+
+Lists files and directories.
+
+    os.listdir("Documents")
+
+
+=========================================================
+                 IMPORTANT DISTINCTION
+=========================================================
+
+os.path
+    -> Mainly used for checking and manipulating paths.
+
+os
+    -> Provides operating-system operations such as
+       creating, deleting, renaming and listing files
+       and directories.
+
+
+INTERVIEW POINT
+---------------
+
+Q: Difference between os.path and os?
+
+A:
+
+    os.path is a part of the os module focused mainly
+    on path operations.
+
+    os also provides broader operating-system operations
+    such as rename(), remove(), mkdir() and listdir().

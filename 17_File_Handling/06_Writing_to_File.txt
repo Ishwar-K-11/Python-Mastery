@@ -1,0 +1,142 @@
+=========================================================
+              WRITING TO A FILE IN PYTHON
+=========================================================
+
+
+1. write()
+=========================================================
+
+write() writes a string to a file.
+
+Syntax:
+
+    file.write(string)
+
+
+Example:
+
+    with open("data.txt", "w") as file:
+        file.write("Hello Python")
+
+
+IMPORTANT:
+
+    write() does NOT automatically add a newline.
+
+Example:
+
+    file.write("Hello")
+    file.write("World")
+
+Result:
+
+    HelloWorld
+
+
+For separate lines:
+
+    file.write("Hello\n")
+    file.write("World\n")
+
+
+---------------------------------------------------------
+2. writelines()
+---------------------------------------------------------
+
+writelines() writes multiple strings to a file.
+
+Example:
+
+    lines = [
+        "Apple\n",
+        "Banana\n",
+        "Mango\n"
+    ]
+
+    with open("data.txt", "w") as file:
+        file.writelines(lines)
+
+
+IMPORTANT:
+
+    writelines() also does NOT automatically add
+    newline characters.
+
+
+---------------------------------------------------------
+3. APPEND MODE
+---------------------------------------------------------
+
+Use "a" mode to add data at the end of an existing file.
+
+Example:
+
+    with open("data.txt", "a") as file:
+        file.write("\nNew Data")
+
+
+Existing content is preserved.
+
+
+---------------------------------------------------------
+4. WRITE MODE
+---------------------------------------------------------
+
+Use "w" mode to write to a file.
+
+Example:
+
+    with open("data.txt", "w") as file:
+        file.write("New Content")
+
+
+If the file already exists:
+
+    Existing content is DELETED.
+
+
+---------------------------------------------------------
+5. EXCLUSIVE MODE
+---------------------------------------------------------
+
+Use "x" when creating a new file.
+
+Example:
+
+    with open("new.txt", "x") as file:
+        file.write("Hello")
+
+
+If the file already exists:
+
+    FileExistsError
+
+
+---------------------------------------------------------
+write() vs writelines()
+---------------------------------------------------------
+
+write()
+    -> Writes a string.
+
+writelines()
+    -> Writes multiple strings from an iterable.
+
+Both:
+    -> Do NOT automatically add \n.
+
+
+INTERVIEW POINT
+---------------
+
+Q: What is the difference between "w" and "a"?
+
+    "w" -> Overwrites existing content.
+
+    "a" -> Adds content at the end without deleting
+           existing content.
+
+
+Q: Does write() add a newline automatically?
+
+    No. You must explicitly use \n.

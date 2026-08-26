@@ -1,0 +1,77 @@
+=========================================================
+             EXCLUSIVE CREATION MODE - "x"
+=========================================================
+
+"x" is the exclusive creation mode in Python file
+handling.
+
+It is used to create a new file only if the file does
+not already exist.
+
+
+Syntax:
+
+    open("filename.txt", "x")
+
+
+Example:
+
+    with open("newfile.txt", "x") as file:
+        file.write("Hello Python")
+
+
+If newfile.txt does not exist:
+
+    -> File is created.
+
+
+If newfile.txt already exists:
+
+    -> FileExistsError is raised.
+
+
+WHY USE "x"?
+------------
+
+    It prevents accidental overwriting of an existing
+    file.
+
+
+"x" vs "w"
+----------
+
+    "x"
+        -> Creates a new file.
+        -> Fails if file already exists.
+        -> Prevents accidental overwrite.
+
+    "w"
+        -> Creates file if it does not exist.
+        -> Overwrites file if it already exists.
+
+
+INTERVIEW QUESTION
+------------------
+
+Q: What is the purpose of "x" mode?
+
+A:
+
+    "x" is used for exclusive file creation. It creates
+    the file only if it does not already exist. If the
+    file exists, Python raises FileExistsError.
+
+
+EXAMPLE:
+
+    try:
+        with open("data.txt", "x") as file:
+            file.write("Hello")
+
+    except FileExistsError:
+        print("File already exists")
+
+
+KEY POINT:
+
+    x = Create only if it does NOT exist.

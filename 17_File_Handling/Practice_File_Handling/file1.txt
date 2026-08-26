@@ -1,0 +1,4 @@
+This is My frist program for file HANDLING 
+i love python programming language 
+Python is Easy to learn and its code run line by line
+we love programming language
