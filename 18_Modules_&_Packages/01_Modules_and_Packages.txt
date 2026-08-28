@@ -1,0 +1,245 @@
+=========================================================
+              MODULES AND PACKAGES IN PYTHON
+=========================================================
+
+
+MODULE
+------
+
+A module is a Python file (.py) that contains reusable
+code such as functions, variables, classes and statements.
+
+Example:
+
+    calculator.py
+
+        def add(a, b):
+            return a + b
+
+        def subtract(a, b):
+            return a - b
+
+
+The calculator.py file is a module.
+
+
+Using the module:
+
+    import calculator
+
+    print(calculator.add(10, 5))
+
+
+Output:
+
+    15
+
+
+WHY USE MODULES?
+----------------
+
+    • Code reusability
+    • Better code organization
+    • Easier maintenance
+    • Avoids duplicate code
+    • Provides a separate namespace
+
+
+=========================================================
+                    PACKAGE
+=========================================================
+
+A package is a directory used to organize related
+Python modules and subpackages.
+
+Example:
+
+    project/
+    │
+    ├── main.py
+    │
+    └── calculator/
+        ├── __init__.py
+        ├── addition.py
+        └── subtraction.py
+
+
+Here:
+
+    calculator
+        → Package
+
+    addition.py
+        → Module
+
+    subtraction.py
+        → Module
+
+
+=========================================================
+              MODULE VS PACKAGE
+=========================================================
+
+Module:
+
+    • Usually a single .py file
+    • Contains reusable Python code
+
+
+Package:
+
+    • Directory that organizes modules
+    • Can contain modules and subpackages
+    • Used for larger project structures
+
+
+Example:
+
+    calculator.py
+        → Module
+
+
+    calculator/
+        ├── addition.py
+        ├── subtraction.py
+        └── multiplication.py
+
+        → Package
+
+
+=========================================================
+                  __init__.py
+=========================================================
+
+__init__.py is commonly placed inside a package.
+
+Example:
+
+    calculator/
+        ├── __init__.py
+        ├── addition.py
+        └── subtraction.py
+
+
+It can contain package initialization code and can also
+control what is exposed by the package.
+
+
+Modern Python also supports namespace packages without
+__init__.py, but regular packages commonly use it.
+
+
+=========================================================
+                  TYPES OF MODULES
+=========================================================
+
+1. Built-in / Standard Library Modules
+
+    Examples:
+
+        math
+        os
+        sys
+        random
+        json
+        pathlib
+
+
+2. User-defined Modules
+
+    Modules created by the programmer.
+
+    Example:
+
+        calculator.py
+        database.py
+        utility.py
+
+
+3. Third-party Modules
+
+    Modules installed separately.
+
+    Examples:
+
+        requests
+        numpy
+        pandas
+
+
+=========================================================
+                  EXAMPLE PROJECT
+=========================================================
+
+    project/
+    │
+    ├── main.py
+    │
+    └── utilities/
+        ├── __init__.py
+        ├── calculator.py
+        └── string_utils.py
+
+
+calculator.py:
+
+    def add(a, b):
+        return a + b
+
+
+main.py:
+
+    from utilities.calculator import add
+
+    print(add(10, 20))
+
+
+Output:
+
+    30
+
+
+=========================================================
+                 IMPORTANT INTERVIEW POINTS
+=========================================================
+
+Q: What is a module?
+
+A:
+
+    A module is a Python file containing reusable code
+    such as functions, classes and variables.
+
+
+Q: What is a package?
+
+A:
+
+    A package is a way of organizing related Python
+    modules and subpackages into a directory structure.
+
+
+Q: Difference between module and package?
+
+A:
+
+    Module → A Python file.
+
+    Package → A directory used to organize modules.
+
+
+Q: Why are modules used?
+
+A:
+
+    To improve code reusability, organization and
+    maintainability.
+
+
+Q: What is __init__.py?
+
+A:
+
+    It is commonly used inside regular Python packages
+    for package initialization and package-level
+    definitions.

@@ -1,0 +1,209 @@
+=========================================================
+              FOUR WAYS TO IMPORT IN PYTHON
+=========================================================
+
+
+Consider this package structure:
+
+    project/
+    │
+    ├── main.py
+    │
+    └── calculator/
+        ├── __init__.py
+        └── operations.py
+
+
+operations.py:
+
+    def add(a, b):
+        return a + b
+
+    def subtract(a, b):
+        return a - b
+
+
+=========================================================
+             1. import package
+=========================================================
+
+Syntax:
+
+    import calculator
+
+
+Example:
+
+    import calculator
+
+    print(calculator.operations.add(10, 5))
+
+
+This imports the package.
+
+The complete path is used to access objects.
+
+
+Note:
+
+    This form is most useful when the package exposes
+    or loads the required module through its package
+    namespace.
+
+
+=========================================================
+             2. import package.module
+=========================================================
+
+Syntax:
+
+    import package.module
+
+
+Example:
+
+    import calculator.operations
+
+    print(calculator.operations.add(10, 5))
+
+
+Here:
+
+    calculator
+        → Package
+
+    operations
+        → Module
+
+    add()
+        → Function
+
+
+=========================================================
+             3. from package import module
+=========================================================
+
+Syntax:
+
+    from package import module
+
+
+Example:
+
+    from calculator import operations
+
+    print(operations.add(10, 5))
+
+
+The module can now be accessed directly using:
+
+    operations
+
+
+instead of:
+
+    calculator.operations
+
+
+=========================================================
+          4. from package.module import object
+=========================================================
+
+Syntax:
+
+    from package.module import function
+
+
+Example:
+
+    from calculator.operations import add
+
+    print(add(10, 5))
+
+
+The function can now be used directly.
+
+
+=========================================================
+                    USING ALIAS
+=========================================================
+
+An alias gives another name to an imported module or
+object.
+
+Example:
+
+    import calculator.operations as op
+
+    print(op.add(10, 5))
+
+
+Another example:
+
+    from calculator.operations import add as addition
+
+    print(addition(10, 5))
+
+
+=========================================================
+                IMPORT COMPARISON
+=========================================================
+
+    import package.module
+
+        calculator.operations.add()
+
+
+    from package import module
+
+        operations.add()
+
+
+    from package.module import function
+
+        add()
+
+
+The more specific the import, the less typing is needed.
+
+
+=========================================================
+                 AVOID THIS STYLE
+=========================================================
+
+    from calculator.operations import *
+
+
+This imports everything into the current namespace.
+
+Problems:
+
+    • Difficult to know where names came from
+    • Can cause name conflicts
+    • Reduces readability
+    • Can pollute the namespace
+
+
+Prefer explicit imports:
+
+    from calculator.operations import add, subtract
+
+
+=========================================================
+              IMPORTANT INTERVIEW POINT
+=========================================================
+
+Q: Difference between import and from import?
+
+A:
+
+    import module
+
+        Imports the module and requires the module name
+        when accessing its members.
+
+
+    from module import function
+
+        Imports the specific function and allows it to
+        be used directly.

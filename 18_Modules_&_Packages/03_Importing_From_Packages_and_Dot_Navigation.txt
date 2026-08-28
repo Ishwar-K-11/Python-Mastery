@@ -1,0 +1,284 @@
+=========================================================
+       IMPORTING FROM PACKAGES AND DOT NAVIGATION
+=========================================================
+
+
+Consider the following structure:
+
+    project/
+    │
+    ├── main.py
+    │
+    └── company/
+        ├── __init__.py
+        │
+        ├── employees/
+        │   ├── __init__.py
+        │   ├── developer.py
+        │   └── manager.py
+        │
+        └── accounts/
+            ├── __init__.py
+            └── billing.py
+
+
+Here:
+
+    company
+        → Package
+
+    employees
+        → Subpackage
+
+    developer.py
+        → Module
+
+    Developer class
+        → Object inside the module
+
+
+=========================================================
+              IMPORTING A MODULE
+=========================================================
+
+    from company.employees import developer
+
+    developer.some_function()
+
+
+Structure navigation:
+
+    company
+       ↓
+    employees
+       ↓
+    developer
+
+
+The dot means:
+
+    "Go inside"
+
+
+=========================================================
+             IMPORTING A FUNCTION
+=========================================================
+
+    from company.employees.developer import create_user
+
+    create_user()
+
+
+Navigation:
+
+    company
+       ↓
+    employees
+       ↓
+    developer
+       ↓
+    create_user
+
+
+=========================================================
+              IMPORTING A CLASS
+=========================================================
+
+    from company.employees.developer import Developer
+
+    developer = Developer()
+
+
+=========================================================
+                 MULTIPLE IMPORTS
+=========================================================
+
+    from company.employees.developer import Developer
+    from company.employees.manager import Manager
+
+
+=========================================================
+                    DOT (.)
+=========================================================
+
+The dot is used to navigate through package and module
+hierarchies.
+
+Example:
+
+    company.employees.developer
+
+
+Means:
+
+    company
+        ↓
+    employees
+        ↓
+    developer
+
+
+Each dot moves one level deeper into the structure.
+
+
+=========================================================
+                  SUBPACKAGES
+=========================================================
+
+A package can contain another package.
+
+Example:
+
+    company/
+        employees/
+            developer.py
+
+
+Here:
+
+    company
+        → Package
+
+    employees
+        → Subpackage
+
+    developer
+        → Module
+
+
+Import:
+
+    from company.employees import developer
+
+
+=========================================================
+              RELATIVE DOT NAVIGATION
+=========================================================
+
+Inside a package, dots can also be used for relative
+imports.
+
+Example:
+
+    project/
+    │
+    └── app/
+        ├── __init__.py
+        ├── main.py
+        │
+        └── utils/
+            ├── __init__.py
+            └── helper.py
+
+
+Inside main.py:
+
+    from .utils import helper
+
+
+The single dot means:
+
+    Current package
+
+
+So:
+
+    .utils
+
+means:
+
+    "Go to the utils package inside the current package."
+
+
+=========================================================
+                    TWO DOTS (..)
+=========================================================
+
+Two dots mean:
+
+    Parent package
+
+
+Example:
+
+    project/
+    │
+    └── app/
+        ├── __init__.py
+        ├── config.py
+        │
+        └── utils/
+            ├── __init__.py
+            └── helper.py
+
+
+Inside helper.py:
+
+    from .. import config
+
+
+Meaning:
+
+    .. 
+      ↓
+    Parent package: app
+
+
+Then:
+
+    config
+
+
+is imported from app.
+
+
+=========================================================
+             DOT NAVIGATION SUMMARY
+=========================================================
+
+    .module
+
+        Current package
+
+
+    ..module
+
+        Parent package
+
+
+    ...module
+
+        Parent of parent package
+
+
+Example:
+
+    from .utils import helper
+
+    from ..config import settings
+
+
+=========================================================
+             IMPORTANT INTERVIEW POINT
+=========================================================
+
+Q: What does "." mean in an import?
+
+A:
+
+    "." refers to the current package.
+
+
+Q: What does ".." mean?
+
+A:
+
+    ".." refers to the parent package.
+
+
+Q: Why are dots used in package imports?
+
+A:
+
+    They are used to navigate through package and
+    subpackage structures and to perform relative imports.

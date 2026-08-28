@@ -1,0 +1,306 @@
+=========================================================
+             ABSOLUTE AND RELATIVE IMPORTS
+=========================================================
+
+
+Imports in Python can be written as:
+
+    1. Absolute imports
+    2. Relative imports
+
+
+=========================================================
+                  ABSOLUTE IMPORT
+=========================================================
+
+An absolute import specifies the complete path starting
+from the top-level package.
+
+Example structure:
+
+    project/
+    │
+    └── app/
+        ├── __init__.py
+        ├── main.py
+        │
+        └── utils/
+            ├── __init__.py
+            └── helper.py
+
+
+Inside main.py:
+
+    from app.utils.helper import function
+
+
+The import starts from:
+
+    app
+
+and navigates to:
+
+    utils
+       ↓
+    helper
+       ↓
+    function
+
+
+This is an absolute import.
+
+
+=========================================================
+              RELATIVE IMPORT
+=========================================================
+
+A relative import starts from the current package.
+
+Example:
+
+    project/
+    │
+    └── app/
+        ├── __init__.py
+        ├── main.py
+        │
+        └── utils/
+            ├── __init__.py
+            └── helper.py
+
+
+Inside main.py:
+
+    from .utils.helper import function
+
+
+Here:
+
+    .
+      ↓
+    Current package: app
+
+
+Then:
+
+    utils
+      ↓
+    helper
+      ↓
+    function
+
+
+=========================================================
+                 PARENT PACKAGE
+=========================================================
+
+Example:
+
+    project/
+    │
+    └── app/
+        ├── __init__.py
+        ├── config.py
+        │
+        └── utils/
+            ├── __init__.py
+            └── helper.py
+
+
+Inside helper.py:
+
+    from .. import config
+
+
+Meaning:
+
+    ..
+      ↓
+    Move to parent package: app
+
+    config
+      ↓
+    Import config.py
+
+
+=========================================================
+            ABSOLUTE VS RELATIVE
+=========================================================
+
+Absolute:
+
+    from app.utils.helper import function
+
+
+Relative:
+
+    from .utils.helper import function
+
+
+Absolute imports start from the top-level package.
+
+Relative imports start from the current package.
+
+
+=========================================================
+                WHEN TO USE WHICH?
+=========================================================
+
+Absolute imports are generally preferred in larger
+applications because they clearly show where the imported
+module comes from.
+
+Example:
+
+    from app.database.connection import connect
+
+
+Relative imports can be useful when working within a
+package and referring to nearby modules.
+
+Example:
+
+    from .database import connection
+
+
+=========================================================
+              IMPORTANT RESTRICTION
+=========================================================
+
+Relative imports require package context.
+
+For example:
+
+    from .utils import helper
+
+
+may fail if the file is executed directly as:
+
+    python main.py
+
+
+Python may not know the package context required for the
+relative import.
+
+
+Running the package/module through the proper package
+context can solve this problem.
+
+
+=========================================================
+                 COMMON MISTAKE
+=========================================================
+
+Suppose:
+
+    app/
+        main.py
+        utils.py
+
+
+Inside main.py:
+
+    from .utils import something
+
+
+If main.py is directly executed:
+
+    python main.py
+
+
+You may get:
+
+    ImportError:
+    attempted relative import with no known parent package
+
+
+This happens because the module is being executed without
+package context.
+
+
+=========================================================
+                 INTERVIEW QUESTIONS
+=========================================================
+
+Q: What is an absolute import?
+
+A:
+
+    An import that specifies the complete module path
+    from the top-level package.
+
+
+Q: What is a relative import?
+
+A:
+
+    An import that uses dots to refer to the current or
+    parent package.
+
+
+Q: What does "." mean?
+
+A:
+
+    Current package.
+
+
+Q: What does ".." mean?
+
+A:
+
+    Parent package.
+
+
+Q: Which is easier to understand in a large project?
+
+A:
+
+    Absolute imports are generally clearer because the
+    complete import path is visible.
+
+
+=========================================================
+                    QUICK REVISION
+=========================================================
+
+Absolute:
+
+    from app.utils.helper import function
+
+
+Relative:
+
+    from .utils.helper import function
+
+
+Parent package:
+
+    from ..config import settings
+
+
+Single dot:
+
+    .
+
+
+    Current package
+
+
+Double dot:
+
+    ..
+
+
+    Parent package
+
+
+KEY IDEA:
+
+    Absolute import
+        → Start from the top-level package.
+
+
+    Relative import
+        → Start from the current package and navigate
+          using . and ..
