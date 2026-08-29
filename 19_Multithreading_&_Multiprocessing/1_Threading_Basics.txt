@@ -1,0 +1,278 @@
+PYTHON THREADING BASICS
+
+
+1. THREAD
+
+A thread is a lightweight unit of execution inside a process.
+
+A process can contain multiple threads.
+
+Threads belonging to the same process share:
+
+	• Memory
+	• Global variables
+	• Resources
+	• Program code
+	• Data
+
+Because threads share memory, communication between threads is easier.
+
+However, shared memory can also cause problems such as race conditions.
+
+
+2. MULTITHREADING
+
+Multithreading means executing multiple threads within a single process.
+
+Python provides the threading module for creating and managing threads.
+
+Syntax:
+
+import threading
+
+t = threading.Thread(target=function_name)
+t.start()
+
+
+3. IMPORTING THREADING
+
+import threading
+
+
+4. CREATING A BASIC THREAD
+
+import threading
+
+def task():
+	print("This task is running")
+
+t = threading.Thread(target=task)
+
+t.start()
+
+
+5. THREAD TARGET
+
+The target parameter specifies the function that the thread should execute.
+
+Example:
+
+import threading
+
+def task():
+	print("Task is running")
+
+t = threading.Thread(target=task)
+
+t.start()
+
+
+Do not call the function while passing it as target.
+
+Correct:
+
+threading.Thread(target=task)
+
+Incorrect:
+
+threading.Thread(target=task())
+
+
+6. START()
+
+The start() method starts the thread.
+
+Example:
+
+import threading
+
+def task():
+	print("Task started")
+
+t = threading.Thread(target=task)
+
+t.start()
+
+
+7. JOIN()
+
+The join() method makes the main thread wait until the specified thread finishes.
+
+Example:
+
+import threading
+import time
+
+def task():
+	print("Task started")
+	time.sleep(2)
+	print("Task finished")
+
+t = threading.Thread(target=task)
+
+t.start()
+t.join()
+
+print("Main Program END")
+
+
+8. THREAD WITH ARGUMENTS
+
+The args parameter is used to pass arguments to the target function.
+
+Example:
+
+import threading
+
+def task(name):
+	print(f"{name} task is running")
+
+t = threading.Thread(target=task, args=("Cooking",))
+
+t.start()
+
+
+9. MULTIPLE ARGUMENTS
+
+import threading
+
+def task(name, duration):
+	print(f"Task: {name}")
+	print(f"Duration: {duration}")
+
+t = threading.Thread(target=task, args=("Cooking", 2))
+
+t.start()
+
+
+10. MULTIPLE THREADS
+
+import time
+import threading
+
+def task(name):
+	print(f"{name} task is running")
+	time.sleep(2)
+	print(f"{name} task is finished")
+
+print("Main Program START")
+
+t1 = threading.Thread(target=task, args=("Cooking",))
+t2 = threading.Thread(target=task, args=("Baking",))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print("Main Program END")
+
+
+11. HOW MULTIPLE THREADS WORK
+
+Main Thread
+	|
+	|---- Thread 1
+	|
+	|---- Thread 2
+	|
+	|---- Thread 3
+
+All threads belong to the same process.
+
+Threads can make progress concurrently.
+
+
+12. THREAD EXECUTION ORDER
+
+The order in which threads execute is not guaranteed.
+
+Example:
+
+Thread 1 -> starts
+Thread 2 -> starts
+Thread 2 -> finishes
+Thread 1 -> finishes
+
+or:
+
+Thread 1 -> starts
+Thread 1 -> finishes
+Thread 2 -> starts
+Thread 2 -> finishes
+
+The operating system decides when threads are scheduled.
+
+
+13. THREADING WITH SLEEP
+
+import threading
+import time
+
+def task(name):
+	print(f"{name} started")
+	time.sleep(2)
+	print(f"{name} finished")
+
+t1 = threading.Thread(target=task, args=("Task 1",))
+t2 = threading.Thread(target=task, args=("Task 2",))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print("All tasks completed")
+
+
+14. IMPORTANT THREADING FUNCTIONS
+
+threading.Thread()
+
+Creates a thread.
+
+
+start()
+
+Starts the thread.
+
+
+join()
+
+Waits for the thread to finish.
+
+
+threading.Lock()
+
+Creates a lock for synchronization.
+
+
+15. BASIC THREADING FLOW
+
+Create thread
+
+	↓
+
+Set target function
+
+	↓
+
+Call start()
+
+	↓
+
+Thread executes target function
+
+	↓
+
+Call join()
+
+	↓
+
+Main program waits for thread
+
+	↓
+
+Thread finishes

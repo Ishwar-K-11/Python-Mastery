@@ -1,0 +1,229 @@
+CPU-BOUND TASK VS I/O-BOUND TASK
+
+
+1. CPU-BOUND TASK
+
+A CPU-bound task is a task whose performance is mainly limited by the CPU.
+
+The program spends most of its time performing calculations.
+
+
+2. EXAMPLES OF CPU-BOUND TASKS
+
+	• Heavy mathematical calculations
+	• Image processing
+	• Video processing
+	• Large dataset processing
+	• Encryption
+	• Compression
+	• Complex algorithms
+	• Scientific calculations
+	• Machine learning calculations
+
+
+3. CPU-BOUND EXAMPLE
+
+def calculate():
+	total = 0
+
+	for i in range(10000000):
+		total += i * i
+
+	return total
+
+
+This task is CPU-bound because the CPU spends most of its time performing calculations.
+
+
+4. I/O-BOUND TASK
+
+An I/O-bound task is a task whose performance is mainly limited by input/output operations.
+
+The program spends significant time waiting.
+
+
+5. I/O MEANS
+
+I/O stands for:
+
+Input / Output
+
+
+6. EXAMPLES OF I/O-BOUND TASKS
+
+	• Downloading files
+	• API calls
+	• Network requests
+	• Reading files
+	• Writing files
+	• Database queries
+	• Network communication
+	• Waiting for user input
+	• Receiving data from a server
+
+
+7. I/O-BOUND EXAMPLE
+
+import time
+
+def download():
+	print("Downloading...")
+	time.sleep(2)
+	print("Download completed")
+
+download()
+
+
+The program spends time waiting.
+
+In a real application, this waiting could be caused by a network, file system, database, or external service.
+
+
+8. CPU-BOUND VS I/O-BOUND
+
+CPU-BOUND
+
+	• CPU is the bottleneck
+	• Heavy calculations
+	• High CPU usage
+	• Multiprocessing is often useful
+	• Benefits from parallelism
+
+
+I/O-BOUND
+
+	• I/O is the bottleneck
+	• Program spends time waiting
+	• CPU may be idle during waiting
+	• Threading is often useful
+	• Benefits from concurrency
+
+
+9. WHY THREADING HELPS I/O-BOUND TASKS
+
+Suppose two files need to be downloaded.
+
+Without concurrency:
+
+Download File 1
+	↓
+Wait
+	↓
+File 1 completed
+	↓
+Download File 2
+	↓
+Wait
+	↓
+File 2 completed
+
+
+With threading:
+
+Thread 1 -> Download File 1 -> Waiting
+
+Thread 2 -> Download File 2 -> Waiting
+
+While one thread is waiting, another thread can make progress.
+
+
+10. THREADING FOR I/O
+
+import threading
+import time
+
+def download(name):
+	print(f"{name} started")
+	time.sleep(2)
+	print(f"{name} completed")
+
+t1 = threading.Thread(target=download, args=("File 1",))
+t2 = threading.Thread(target=download, args=("File 2",))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print("All downloads completed")
+
+
+11. WHY MULTIPROCESSING HELPS CPU-BOUND TASKS
+
+CPU-bound tasks require CPU execution time.
+
+Multiple processes can execute on different CPU cores.
+
+Example:
+
+Process 1 -> CPU Core 1
+
+Process 2 -> CPU Core 2
+
+Process 3 -> CPU Core 3
+
+Process 4 -> CPU Core 4
+
+
+12. MULTIPROCESSING FOR CPU
+
+from multiprocessing import Process
+
+def calculate(name):
+	total = 0
+
+	for i in range(10000000):
+		total += i * i
+
+	print(f"{name} completed")
+
+if __name__ == "__main__":
+	p1 = Process(target=calculate, args=("Process 1",))
+	p2 = Process(target=calculate, args=("Process 2",))
+
+	p1.start()
+	p2.start()
+
+	p1.join()
+	p2.join()
+
+	print("All calculations completed")
+
+
+13. DECISION GUIDE
+
+Downloading files -> Threading
+
+API calls -> Threading
+
+Reading and writing many files -> Threading
+
+Database queries -> Threading
+
+Network requests -> Threading
+
+
+Heavy mathematical calculations -> Multiprocessing
+
+Image processing -> Multiprocessing
+
+Video processing -> Multiprocessing
+
+Large dataset processing -> Multiprocessing
+
+CPU-intensive algorithms -> Multiprocessing
+
+
+14. EASY RULE
+
+I/O-bound -> Threading
+
+CPU-bound -> Multiprocessing
+
+
+15. IMPORTANT NOTE
+
+The rule above is a strong starting point, but actual performance depends on the workload, Python implementation, libraries being used, hardware, and overhead.
+
+Performance should ultimately be measured rather than assumed.

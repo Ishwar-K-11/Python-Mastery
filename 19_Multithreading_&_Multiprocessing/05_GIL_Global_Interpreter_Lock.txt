@@ -1,0 +1,183 @@
+GIL — GLOBAL INTERPRETER LOCK
+
+
+1. WHAT IS GIL?
+
+GIL stands for:
+
+Global Interpreter Lock
+
+The GIL is a mechanism used by the traditional CPython implementation of Python.
+
+It allows only one thread at a time to execute Python bytecode within a single CPython process.
+
+
+2. IMPORTANT POINT
+
+The GIL does NOT mean that Python can create only one thread.
+
+Python can create many threads.
+
+The important point is:
+
+In traditional CPython, only one thread at a time can execute Python bytecode within a process.
+
+
+3. WHY DOES CPYTHON HAVE THE GIL?
+
+One important reason is to simplify memory management and protect parts of the interpreter's internal state.
+
+CPython uses reference counting and other mechanisms to manage Python objects.
+
+The GIL helps make certain interpreter operations safer and simpler.
+
+
+4. GIL AND THREADS
+
+Suppose we have:
+
+Thread 1 -> Python code
+
+Thread 2 -> Python code
+
+Thread 3 -> Python code
+
+All these threads can exist at the same time.
+
+However, in traditional CPython, only one thread at a time executes Python bytecode.
+
+
+5. GIL AND CPU-BOUND TASKS
+
+The GIL can become a limitation for CPU-bound Python code using threads.
+
+Example:
+
+Thread 1 -> Heavy calculation
+
+Thread 2 -> Heavy calculation
+
+Both threads cannot simultaneously execute Python bytecode in traditional CPython.
+
+The threads take turns acquiring the GIL.
+
+
+6. CPU-BOUND THREADING
+
+CPU-bound + Threads
+
+	↓
+GIL limitation
+
+	↓
+Threads cannot execute Python bytecode simultaneously
+
+	↓
+Limited CPU scaling
+
+
+7. GIL AND I/O-BOUND TASKS
+
+The GIL is much less problematic for I/O-bound tasks.
+
+During many blocking I/O operations, the interpreter can release the GIL.
+
+Example:
+
+Thread 1 -> Network request -> Waiting
+
+While Thread 1 waits:
+
+Thread 2 -> Executes Python code
+
+Thread 1 -> Continues
+
+Therefore, threading can work very well for I/O-bound tasks.
+
+
+8. EXAMPLE
+
+import threading
+import time
+
+def download(name):
+	print(f"{name} started")
+	time.sleep(2)
+	print(f"{name} finished")
+
+t1 = threading.Thread(target=download, args=("Download 1",))
+t2 = threading.Thread(target=download, args=("Download 2",))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print("All downloads completed")
+
+
+The threads spend time waiting.
+
+Therefore, threading is useful here.
+
+
+9. GIL AND MULTIPROCESSING
+
+Each process has its own Python interpreter.
+
+In traditional CPython:
+
+Process 1 -> Interpreter -> GIL
+
+Process 2 -> Interpreter -> GIL
+
+Process 3 -> Interpreter -> GIL
+
+Therefore, different processes can execute Python code in parallel on different CPU cores.
+
+
+10. THREADING VS MULTIPROCESSING WITH GIL
+
+THREADING
+
+	• Multiple threads
+	• Same process
+	• Shared memory
+	• Same GIL in traditional CPython
+	• Excellent for many I/O-bound workloads
+	• Limited for CPU-bound Python bytecode
+
+
+MULTIPROCESSING
+
+	• Multiple processes
+	• Separate memory
+	• Separate Python interpreters
+	• Each process has its own GIL
+	• Suitable for CPU-bound work
+	• Can achieve true parallelism
+
+
+11. WHAT GIL DOES NOT MEAN
+
+The GIL does not mean:
+
+	• Python cannot use multiple threads
+	• Python cannot perform concurrent I/O
+	• Python cannot use multiple CPU cores at all
+	• Python programs cannot use multiprocessing
+
+
+12. SIMPLE DEFINITION
+
+GIL is a lock in traditional CPython that allows only one thread at a time to execute Python bytecode within a process.
+
+
+13. EASY MEMORY TRICK
+
+I/O-bound -> Threading
+
+CPU-bound -> Multiprocessing
+
+GIL -> One thread executes Python bytecode at a time per process in traditional CPython.

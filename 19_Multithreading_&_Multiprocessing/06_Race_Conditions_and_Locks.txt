@@ -1,0 +1,354 @@
+RACE CONDITIONS AND LOCKS
+
+
+1. RACE CONDITION
+
+A race condition occurs when multiple threads access shared mutable data concurrently and the final result depends on the timing or ordering of their execution.
+
+
+2. SHARED DATA
+
+Threads within the same process share memory.
+
+Example:
+
+counter = 0
+
+Multiple threads can access counter.
+
+If multiple threads modify counter at the same time, synchronization may be required.
+
+
+3. RACE CONDITION EXAMPLE
+
+import threading
+
+counter = 0
+
+def increment():
+	global counter
+
+	for i in range(100000):
+		counter += 1
+
+t1 = threading.Thread(target=increment)
+t2 = threading.Thread(target=increment)
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print(counter)
+
+
+The expected result is:
+
+200000
+
+However, unsynchronized access to shared mutable state can result in lost updates or other concurrency problems.
+
+
+4. WHY counter += 1 CAN CAUSE A PROBLEM
+
+The statement:
+
+counter += 1
+
+should not be considered an indivisible read-modify-write operation.
+
+Conceptually:
+
+	1. Read counter
+	2. Calculate counter + 1
+	3. Write the result
+
+
+5. RACE CONDITION EXAMPLE
+
+Suppose:
+
+counter = 5
+
+
+Thread 1:
+
+Reads 5
+
+
+Thread 2:
+
+Reads 5
+
+
+Thread 1:
+
+Calculates 5 + 1 = 6
+
+
+Thread 2:
+
+Calculates 5 + 1 = 6
+
+
+Thread 1:
+
+Writes 6
+
+
+Thread 2:
+
+Writes 6
+
+
+Final value:
+
+6
+
+
+Expected value:
+
+7
+
+
+The second update was lost.
+
+
+6. LOCK
+
+A lock is a synchronization mechanism used to protect shared data.
+
+Python provides:
+
+threading.Lock()
+
+
+7. CREATING A LOCK
+
+import threading
+
+lock = threading.Lock()
+
+
+8. USING A LOCK
+
+import threading
+
+counter = 0
+
+lock = threading.Lock()
+
+def increment():
+	global counter
+
+	for i in range(100000):
+		with lock:
+			counter += 1
+
+t1 = threading.Thread(target=increment)
+t2 = threading.Thread(target=increment)
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+print(counter)
+
+
+9. CRITICAL SECTION
+
+A critical section is a part of a program where shared data or shared resources are accessed or modified.
+
+Example:
+
+with lock:
+	counter += 1
+
+The code inside the protected section is the critical section.
+
+
+10. HOW LOCK WORKS
+
+Without a lock:
+
+Thread A -> Access shared data
+
+Thread B -> Access shared data
+
+Thread A -> Modify data
+
+Thread B -> Modify data
+
+
+This can cause a race condition.
+
+
+With a lock:
+
+Thread A -> Acquires lock
+
+Thread A -> Accesses shared data
+
+Thread A -> Modifies data
+
+Thread A -> Releases lock
+
+Thread B -> Acquires lock
+
+Thread B -> Accesses shared data
+
+Thread B -> Modifies data
+
+Thread B -> Releases lock
+
+
+Only one thread can enter the protected section at a time for that lock.
+
+
+11. WITH LOCK
+
+The recommended style is:
+
+with lock:
+	counter += 1
+
+The lock is automatically released when the with block ends.
+
+
+12. LOCK ACQUIRE AND RELEASE
+
+A lock can also be used explicitly:
+
+lock.acquire()
+
+try:
+	counter += 1
+finally:
+	lock.release()
+
+
+Using with is generally simpler:
+
+with lock:
+	counter += 1
+
+
+13. GIL VS LOCK
+
+GIL:
+
+	• Global Interpreter Lock
+	• Part of traditional CPython
+	• Controls Python bytecode execution between threads
+	• One thread executes Python bytecode at a time per process
+
+
+LOCK:
+
+	• Created by the programmer
+	• Used for synchronization
+	• Protects shared resources
+	• Controls access to a critical section
+
+
+14. IMPORTANT DIFFERENCE
+
+The GIL does not replace a Lock.
+
+Even with the GIL, application-level race conditions can occur.
+
+Use threading.Lock() when multiple threads need safe access to shared mutable data.
+
+
+15. LOCK EXAMPLE
+
+import threading
+
+balance = 1000
+
+lock = threading.Lock()
+
+def withdraw(amount):
+	global balance
+
+	with lock:
+		if balance >= amount:
+			balance -= amount
+			print(f"Withdrawn: {amount}")
+			print(f"Remaining balance: {balance}")
+
+t1 = threading.Thread(target=withdraw, args=(600,))
+t2 = threading.Thread(target=withdraw, args=(600,))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+
+The lock ensures that the balance check and update are protected from simultaneous access.
+
+
+16. RACE CONDITION VS LOCK
+
+RACE CONDITION
+
+	Multiple threads access shared data without appropriate synchronization.
+
+
+LOCK
+
+	A mechanism used to control access to shared data.
+
+
+17. IMPORTANT RULE
+
+Shared mutable data + multiple threads
+
+	↓
+
+Think about synchronization
+
+	↓
+
+Use Lock when required
+
+
+18. COMMON MISTAKES
+
+Mistake 1:
+
+Thinking the GIL makes all operations thread-safe.
+
+
+Mistake 2:
+
+Assuming counter += 1 is always safe for shared data.
+
+
+Mistake 3:
+
+Using shared mutable data without synchronization.
+
+
+Mistake 4:
+
+Holding a lock for unnecessarily long periods.
+
+
+Mistake 5:
+
+Forgetting to release a manually acquired lock.
+
+
+19. FINAL CONCEPT
+
+GIL controls interpreter-level execution in traditional CPython.
+
+Lock provides application-level synchronization.
+
+They are different concepts.

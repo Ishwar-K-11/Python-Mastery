@@ -1,0 +1,420 @@
+PYTHON MULTIPROCESSING AND DECISION GUIDE
+
+
+1. MULTIPROCESSING
+
+Multiprocessing means using multiple processes to execute tasks.
+
+Python provides the multiprocessing module for creating and managing processes.
+
+
+2. IMPORTING MULTIPROCESSING
+
+from multiprocessing import Process
+
+
+3. CREATING A PROCESS
+
+from multiprocessing import Process
+
+def task():
+	print("Process is running")
+
+if __name__ == "__main__":
+	p = Process(target=task)
+
+	p.start()
+	p.join()
+
+
+4. PROCESS()
+
+The Process class is used to create a new process.
+
+Syntax:
+
+Process(target=function, args=())
+
+
+5. PROCESS WITH ARGUMENTS
+
+from multiprocessing import Process
+
+def task(name):
+	print(f"{name} is running")
+
+if __name__ == "__main__":
+	p = Process(target=task, args=("Process-1",))
+
+	p.start()
+	p.join()
+
+
+6. MULTIPLE PROCESSES
+
+from multiprocessing import Process
+
+def task(name):
+	print(f"{name} is running")
+
+if __name__ == "__main__":
+	p1 = Process(target=task, args=("Process-1",))
+	p2 = Process(target=task, args=("Process-2",))
+
+	p1.start()
+	p2.start()
+
+	p1.join()
+	p2.join()
+
+
+7. START()
+
+start() starts the process.
+
+Example:
+
+p.start()
+
+
+8. JOIN()
+
+join() makes the main process wait until the child process finishes.
+
+Example:
+
+p.start()
+p.join()
+
+print("Process completed")
+
+
+9. __name__ == "__main__"
+
+When using multiprocessing, process creation code should generally be protected with:
+
+if __name__ == "__main__":
+
+Example:
+
+from multiprocessing import Process
+
+def task():
+	print("Task running")
+
+if __name__ == "__main__":
+	p = Process(target=task)
+
+	p.start()
+	p.join()
+
+
+This is particularly important on platforms that use the spawn method to start child processes.
+
+
+10. MULTIPROCESSING ADVANTAGES
+
+	• True parallelism
+	• Can use multiple CPU cores
+	• Good for CPU-bound tasks
+	• Separate Python interpreters
+	• Avoids the traditional single-process GIL limitation
+	• Useful for heavy calculations
+	• Useful for image processing
+	• Useful for video processing
+	• Useful for large data processing
+
+
+11. MULTIPROCESSING DISADVANTAGES
+
+	• Higher memory usage
+	• Process creation has overhead
+	• Process switching can be expensive
+	• Processes have separate memory
+	• Communication is more complicated
+	• Data sharing can be expensive
+	• Data may need serialization
+
+
+12. MULTIPROCESSING USE CASES
+
+Heavy mathematical calculations
+
+Image processing
+
+Video processing
+
+Large dataset processing
+
+Scientific calculations
+
+CPU-intensive algorithms
+
+Complex data processing
+
+
+13. THREADING USE CASES
+
+Downloading files
+
+API calls
+
+Network requests
+
+Reading files
+
+Writing files
+
+Database queries
+
+Waiting for external services
+
+I/O-heavy applications
+
+
+14. MULTIPROCESSING VS THREADING
+
+THREADING
+
+	One process
+	Multiple threads
+	Shared memory
+	Lower memory overhead
+	Easy communication
+	Good for I/O-bound tasks
+	GIL affects CPU-bound Python bytecode in traditional CPython
+
+
+MULTIPROCESSING
+
+	Multiple processes
+	Separate memory
+	Higher memory overhead
+	More complicated communication
+	Good for CPU-bound tasks
+	Can achieve true parallelism
+
+
+15. WHEN MULTIPROCESSING HELPS
+
+Multiprocessing is useful for:
+
+	• Heavy mathematical computations
+	• Image processing
+	• Video processing
+	• Large dataset crunching
+	• CPU-intensive algorithms
+	• Anything that heavily uses the CPU
+
+
+16. COST OF MULTIPROCESSING
+
+Multiprocessing has overhead.
+
+Important costs include:
+
+	• Higher memory usage
+	• Slower process creation compared with threads
+	• Expensive communication
+	• Serialization overhead
+	• Separate memory spaces
+
+
+17. DECISION GUIDE
+
+What type of task is it?
+
+
+		|
+		|
+		v
+
+
+Is the program mainly waiting for I/O?
+
+		|
+		|
+		YES
+		|
+		v
+
+	THREADING
+
+
+Examples:
+
+	• Downloads
+	• Network requests
+	• API calls
+	• File I/O
+	• Database queries
+
+
+If NO:
+
+
+Is the program mainly using the CPU?
+
+		|
+		|
+		YES
+		|
+		v
+
+	MULTIPROCESSING
+
+
+Examples:
+
+	• Math
+	• Calculations
+	• Image processing
+	• Video processing
+	• Large dataset processing
+
+
+18. COMPLETE DECISION TABLE
+
+Downloading files -> Threading
+
+API calls -> Threading
+
+Network requests -> Threading
+
+Reading many files -> Threading
+
+Writing many files -> Threading
+
+Database queries -> Threading
+
+Heavy mathematical calculations -> Multiprocessing
+
+Image processing -> Multiprocessing
+
+Video processing -> Multiprocessing
+
+Large dataset crunching -> Multiprocessing
+
+CPU-intensive algorithms -> Multiprocessing
+
+
+19. SIMPLE RULE
+
+I/O-bound -> Threading
+
+CPU-bound -> Multiprocessing
+
+
+20. COMPLETE TOPIC SUMMARY
+
+Process:
+
+	Independent execution unit
+	Separate memory
+	Higher overhead
+	Suitable for CPU-bound work
+
+
+Thread:
+
+	Lightweight execution unit
+	Shared memory
+	Lower overhead
+	Suitable for I/O-bound work
+
+
+Concurrency:
+
+	Multiple tasks making progress
+
+
+Parallelism:
+
+	Multiple tasks executing simultaneously
+
+
+CPU-bound:
+
+	Task mainly limited by CPU computation
+
+
+I/O-bound:
+
+	Task mainly limited by waiting for I/O
+
+
+GIL:
+
+	Traditional CPython mechanism
+	One thread executes Python bytecode at a time per process
+
+
+Race Condition:
+
+	Unsafe concurrent access to shared mutable data
+
+
+Lock:
+
+	Synchronization mechanism for protecting shared data
+
+
+Threading:
+
+	Usually preferred for I/O-bound workloads
+
+
+Multiprocessing:
+
+	Usually preferred for CPU-bound workloads
+
+
+21. FINAL MEMORY TRICK
+
+I/O-bound
+
+	↓
+
+THREADING
+
+
+CPU-bound
+
+	↓
+
+MULTIPROCESSING
+
+
+Multiple tasks making progress
+
+	↓
+
+CONCURRENCY
+
+
+Multiple tasks executing simultaneously
+
+	↓
+
+PARALLELISM
+
+
+Shared mutable data
+
+	↓
+
+SYNCHRONIZATION
+
+
+Race condition
+
+	↓
+
+LOCK
+
+
+Traditional CPython CPU-bound threading limitation
+
+	↓
+
+GIL

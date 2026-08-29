@@ -1,0 +1,166 @@
+CONCURRENCY VS PARALLELISM
+
+
+1. CONCURRENCY
+
+Concurrency means dealing with multiple tasks during the same period of time.
+
+The tasks do not necessarily execute at exactly the same instant.
+
+A system can switch between tasks and allow each task to make progress.
+
+
+2. CONCURRENCY EXAMPLE
+
+Task A -> Task A -> Task B -> Task B -> Task A -> Task B
+
+The tasks take turns executing.
+
+This is concurrency.
+
+
+3. REAL-WORLD EXAMPLE OF CONCURRENCY
+
+Imagine one chef preparing two dishes.
+
+The chef starts Dish A.
+
+While Dish A is waiting to cook, the chef works on Dish B.
+
+Then the chef returns to Dish A.
+
+One worker is handling multiple tasks.
+
+This is concurrency.
+
+
+4. PARALLELISM
+
+Parallelism means executing multiple tasks at the same time.
+
+Parallelism generally uses multiple CPU cores.
+
+
+5. PARALLELISM EXAMPLE
+
+CPU Core 1 -> Task A
+
+CPU Core 2 -> Task B
+
+Both tasks can execute simultaneously.
+
+This is parallelism.
+
+
+6. REAL-WORLD EXAMPLE OF PARALLELISM
+
+Imagine two chefs.
+
+Chef 1 -> Dish A
+
+Chef 2 -> Dish B
+
+Both dishes are prepared at the same time.
+
+This is parallelism.
+
+
+7. CONCURRENCY VS PARALLELISM
+
+CONCURRENCY
+
+	• Multiple tasks are in progress
+	• Tasks may take turns
+	• Does not require multiple CPU cores
+	• Useful for I/O-bound tasks
+	• Threading is commonly used
+
+
+PARALLELISM
+
+	• Multiple tasks execute simultaneously
+	• Usually uses multiple CPU cores
+	• Useful for CPU-bound tasks
+	• Multiprocessing is commonly used
+
+
+8. THREADING AND CONCURRENCY
+
+Threading is commonly used to achieve concurrency.
+
+Example:
+
+import threading
+import time
+
+def task(name):
+	print(f"{name} started")
+	time.sleep(2)
+	print(f"{name} finished")
+
+t1 = threading.Thread(target=task, args=("Task 1",))
+t2 = threading.Thread(target=task, args=("Task 2",))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+
+9. MULTIPROCESSING AND PARALLELISM
+
+Multiprocessing can provide parallel execution.
+
+Example:
+
+from multiprocessing import Process
+
+def task(name):
+	print(f"{name} started")
+	print(f"{name} finished")
+
+if __name__ == "__main__":
+	p1 = Process(target=task, args=("Task 1",))
+	p2 = Process(target=task, args=("Task 2",))
+
+	p1.start()
+	p2.start()
+
+	p1.join()
+	p2.join()
+
+
+10. CONCURRENCY DOES NOT ALWAYS MEAN PARALLELISM
+
+Concurrency means multiple tasks are being managed or making progress.
+
+Parallelism specifically means multiple tasks are executing simultaneously.
+
+
+11. CONCURRENCY AND PARALLELISM CAN EXIST TOGETHER
+
+A program can use multiple processes running in parallel.
+
+Each process can also use multiple threads for concurrent I/O operations.
+
+Therefore, concurrency and parallelism are not mutually exclusive.
+
+
+12. EASY DIFFERENCE
+
+Concurrency:
+
+Many tasks in progress.
+
+
+Parallelism:
+
+Many tasks executing at the same time.
+
+
+13. MEMORY TRICK
+
+Concurrency = Dealing with many tasks.
+
+Parallelism = Doing many tasks simultaneously.

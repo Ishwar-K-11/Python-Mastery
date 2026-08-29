@@ -1,0 +1,186 @@
+PROCESS VS THREADS
+
+
+1. PROCESS
+
+A process is an independent program that is currently running.
+
+Each process normally has its own:
+
+	• Memory space
+	• Python interpreter
+	• Resources
+	• Execution state
+
+Processes are isolated from each other.
+
+
+2. THREAD
+
+A thread is a lightweight unit of execution inside a process.
+
+A process can contain multiple threads.
+
+Threads within the same process normally share:
+
+	• Memory
+	• Global variables
+	• Resources
+	• Code
+	• Data
+
+
+3. PROCESS STRUCTURE
+
+Process
+	|
+	|---- Memory
+	|
+	|---- Resources
+	|
+	|---- Thread 1
+	|
+	|---- Thread 2
+	|
+	|---- Thread 3
+
+
+4. PROCESS VS THREAD
+
+PROCESS
+
+	• Independent execution unit
+	• Separate memory space
+	• Higher memory usage
+	• More expensive to create
+	• More expensive context switching
+	• Communication is comparatively difficult
+	• Suitable for CPU-bound tasks
+	• Can achieve true parallelism
+
+
+THREAD
+
+	• Lightweight execution unit
+	• Exists inside a process
+	• Shares memory with other threads
+	• Lower memory usage
+	• Faster to create
+	• Faster context switching
+	• Communication is easier
+	• Suitable for I/O-bound tasks
+	• Traditional CPython has GIL limitations
+
+
+5. MEMORY DIFFERENCE
+
+Processes:
+
+Process 1 -> Memory A
+
+Process 2 -> Memory B
+
+The processes have separate memory spaces.
+
+
+Threads:
+
+Process
+	|
+	|---- Thread 1
+	|---- Thread 2
+	|---- Thread 3
+
+The threads share the memory of the process.
+
+
+6. COMMUNICATION
+
+Thread communication is easier because threads share memory.
+
+Process communication is more complicated because processes have separate memory.
+
+Processes may use:
+
+	• Queue
+	• Pipe
+	• Shared memory
+	• Manager
+	• Other IPC mechanisms
+
+
+7. PERFORMANCE
+
+Threads generally have lower overhead than processes.
+
+Processes generally require more resources.
+
+However, processes can provide true parallelism for CPU-bound work.
+
+
+8. WHEN TO USE THREADS
+
+Use threading for tasks such as:
+
+	• Downloading files
+	• API requests
+	• Network requests
+	• Reading files
+	• Writing files
+	• Database queries
+	• Waiting for external services
+
+
+9. WHEN TO USE PROCESSES
+
+Use multiprocessing for tasks such as:
+
+	• Heavy mathematical calculations
+	• Image processing
+	• Video processing
+	• Large dataset processing
+	• CPU-intensive algorithms
+	• Scientific calculations
+
+
+10. SIMPLE COMPARISON
+
+Process:
+
+Separate memory
+Higher overhead
+CPU-bound
+True parallelism
+
+
+Thread:
+
+Shared memory
+Lower overhead
+I/O-bound
+Concurrency
+
+
+11. IMPORTANT DIFFERENCE
+
+Process = Independent execution unit with separate memory.
+
+Thread = Lightweight execution unit inside a process that normally shares memory.
+
+
+12. EASY MEMORY TRICK
+
+PROCESS
+
+	Separate memory
+	More overhead
+	CPU-bound
+	Parallelism
+
+
+THREAD
+
+	Shared memory
+	Less overhead
+	I/O-bound
+	Concurrency
